@@ -1,0 +1,1 @@
+#A dApp for minting text-based generated image NFTs.

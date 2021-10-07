@@ -1,0 +1,49 @@
+.image-slider {
+  width: 20rem;
+  margin: auto;
+}
+
+.image-slider div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-slider > p {
+  text-align: center;
+  margin-top: .5rem;
+  font-size: .8rem;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+.image-slider i {
+  cursor: pointer;
+  color: #cacaca;
+  transition: color .2s ease-in-out;
+  font-size: 1.2rem;
+}
+
+.image-slider i:hover {
+  color: #222222;
+}
+
+.slider-img {
+  width: 17rem;
+  border-radius: .5rem;
+}
+
+.slider-img.active {
+  animation: fade .3s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale(.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

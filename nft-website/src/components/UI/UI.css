@@ -1,0 +1,86 @@
+.ui-input {
+  width: 20rem;
+  height: 2.8rem;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  margin: .5rem;
+}
+
+.ui-input-field {
+  border-radius: 0.5rem;
+  border: 2px solid #acacac;
+  height: 100%;
+  width: 100%;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  transition: border .3s ease-in-out;
+  font-family: inherit;
+  outline: none;
+  background-color: transparent;
+  color: #272727;
+}
+
+.ui-input label {
+  position: absolute;
+  top: .7rem;
+  left: 1.2rem;
+  padding: 0 .5rem;
+  color: #5e5e5e;
+  font-size: .9rem;
+  cursor: text;
+  transition: top .2s ease-out, left .2s ease-out, font-size .2s ease-out;
+}
+
+.ui-input-field:hover {
+  border: 2px solid #29E268;
+}
+
+.ui-input-field:focus {
+  outline: none;
+  border: 2px solid #29ABE2;
+}
+
+.ui-input-field:focus ~ .placeholder,
+.ui-input-field:not(:placeholder-shown).ui-input-field:not(:focus) ~ .placeholder {
+  top: -.5rem;
+  left: .8rem;
+  font-size: .7rem;
+  font-weight: 600;
+  background-color: white;
+  color: #616161;
+}
+
+
+
+
+
+
+
+
+.ui-button {
+  display: block;
+  color: black;
+  cursor: pointer;
+  margin-left: .5rem;
+  border: none;
+  background-color: #29E268;
+  transition: background-color .3s ease-in;
+  letter-spacing: .2rem;
+  font-weight: bold;
+  border-radius: .5rem;
+  padding: .7rem 1rem;
+}
+
+.ui-button:hover {
+  background-color: #29ABE2;
+}
+
+
+
+
+
+
+.ui-card {
+  border: 1px solid #acacac;
+  border-radius: 1rem;
+}

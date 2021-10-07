@@ -1,0 +1,49 @@
+.form .warning {
+  color: red;
+  font-size: .75rem;
+  font-family: cursive;
+}
+
+.mint-btn {
+  width: 20rem;
+  height: 2.9rem;
+}
+
+.mint-region {
+  width: 100%;
+}
+
+.mint-region i {
+  /* color: #29E268; */
+  /* color: #29ABE2; */
+  font-size: 1.3rem;
+}
+
+.signal-indicator {
+  margin-left: 1rem;
+  position: relative;
+}
+
+.signal-indicator div {
+  position: absolute;
+  bottom: 0;
+  left: -.5rem;
+  width: 20rem;
+  height: 2.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signal-indicator div > i {
+  animation: spin .8s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

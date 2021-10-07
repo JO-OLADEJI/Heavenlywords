@@ -1,0 +1,28 @@
+.tx-hash {
+  margin-left: 20vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tx-hash span {
+  margin-left: .5rem;
+  color: #1d6fa5;
+  font-size: .85rem;
+}
+
+.tx-hash i:nth-child(1) {
+  font-weight: bold;
+  margin-right: .5rem;
+}
+
+.copy-btn {
+  cursor: pointer;
+  transition: .15s ease-out color;
+  margin-left: 1rem;
+  color: #8c98a4;
+}
+
+.copy-btn:hover {
+  color: black;
+}

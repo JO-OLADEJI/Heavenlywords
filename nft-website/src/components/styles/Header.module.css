@@ -1,0 +1,19 @@
+.header {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.header > p {
+  color: #5e5e5e;
+}
+
+.social-links img {
+  width: 2rem;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px #0000004f;
+}
+
+.social-links a {
+  display: inline-block;
+  margin: .8rem 1.5rem;
+}

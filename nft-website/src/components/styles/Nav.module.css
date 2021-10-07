@@ -1,0 +1,36 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 10vw;
+}
+
+.logo h1 {
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+.connect-btn {
+  transition: color .3s ease-in-out;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: .2rem;
+  padding: .5rem 1rem;
+  background-color: transparent;
+  letter-spacing: .01rem;
+}
+
+.connect-btn:hover {
+  background-color: transparent;
+}
+
+.connect-btn p {
+  margin-right: .5rem;
+  font-family: cursive;
+}
+
+.connect-btn i {
+  font-size: 1.2rem;
+}
