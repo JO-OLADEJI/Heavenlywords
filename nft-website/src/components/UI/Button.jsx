@@ -6,7 +6,7 @@ const Button = (props) => {
     <button
       className={`ui-button ${props.className}`}
       type={props.type || 'submit'}
-      disabled={props.disabled}
+      disabled={props.disable}
       onClick={props.onClick}>
       {props.children}
     </button>

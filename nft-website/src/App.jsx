@@ -78,6 +78,16 @@ const App = () => {
     setTxHash(() => hash);
   }
 
+  const resetInputs = () => {
+    setWord1('');
+    setWord2('');
+    setWord3('');
+    setWord4('');
+    setWord5('');
+    setWord6('');
+    setWord7('');
+  }
+
 
 
   return (
@@ -97,6 +107,7 @@ const App = () => {
           warning={status}
           walletAddress={walletAddress}
           setTxHash={handleTxHashChange}
+          resetInputs={resetInputs}
         />
         <Visual />
       </div>

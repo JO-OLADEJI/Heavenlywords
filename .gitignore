@@ -3,6 +3,7 @@
 # dependencies
 nft-contract/node_modules/
 nft-website/node_modules/
+
 /.pnp
 .pnp.js
 
@@ -15,7 +16,9 @@ nft-contract/cache/
 /build
 
 # secrets
-/.env
+.env
+nft-contract/.env
+nft-website/.env
 
 # misc
 .DS_Store

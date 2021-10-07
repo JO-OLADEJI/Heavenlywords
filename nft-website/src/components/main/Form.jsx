@@ -19,21 +19,21 @@ const Form = (props) => {
   const mintHandler = async (e) => {
     e.preventDefault();
     const addr = props.walletAddress;
+    const phrase = `${props.words[0].trim()} ${props.words[1].trim()} ${props.words[2].trim()} ${props.words[3].trim()} ${props.words[4].trim()} ${props.words[5].trim()} ${props.words[6].trim()}`;
     animateButton();
 
     // -> payment for NFT. if through, mint
     const txDetails = await payForNft(artCost);
     if (txDetails.success) {
-      const nftTxHash = await axios.post(`${API}/mint`, { addr });
+      props.resetInputs();
+      const nftTxHash = await axios.post(`${API}/mint`, { addr, phrase });
+      props.setTxHash(txDetails.hash.hash);
       setBtnActive(false);
       setBtnValue(<i className="fas fa-check-double" />);
-      setTimeout(() => {
-        setBtnValue('MINT');
-      }, 3 * 1000);
+      setTimeout(() => { setBtnValue('MINT') }, 3 * 1000);
 
-      props.setTxHash(txDetails.hash.hash);
-      console.log(txDetails.hash.hash);
-      console.log({ nftTxHash });
+      // console.log(txDetails.hash.hash);
+      // console.log({ nftTxHash });
     }
     else {
       console.log(txDetails);
@@ -83,7 +83,7 @@ const Form = (props) => {
       <div className={styles['mint-region']}>
         <Button
           className={styles['mint-btn']}
-          // disabled={true}
+          // disable={true}
           onClick={async (e) => mintHandler(e)}>
           {btnValue}
         </Button>
