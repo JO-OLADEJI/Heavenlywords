@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/Form.module.css';
 import Input from '../UI/Input.jsx';
 import Button from '../UI/Button.jsx';
-import { payForNft } from '../../utils/Interact.js';
+import { mintNFT } from '../../utils/Interact.js';
 
 const Form = (props) => {
   const [btnActive, setBtnActive] = useState(false);
   const [btnValue, setBtnValue] = useState('MINT');
+  const [phrase, setPhrase] = useState('');
   const API = 'http://localhost:3001';
-  const artCost = '0.02'; //ethers
+
+  // functions
+  useEffect(() => {
+    const newPhrase = `${props.words[0].trim()} ${props.words[1].trim()} ${props.words[2].trim()} ${props.words[3].trim()} ${props.words[4].trim()} ${props.words[5].trim()} ${props.words[6].trim()}`;
+    setPhrase(() => newPhrase);
+  }, [props.words]);
 
   const animateButton = () => {
     setBtnActive(true);
@@ -19,27 +25,33 @@ const Form = (props) => {
   const mintHandler = async (e) => {
     e.preventDefault();
     const addr = props.walletAddress;
-    const phrase = `${props.words[0].trim()} ${props.words[1].trim()} ${props.words[2].trim()} ${props.words[3].trim()} ${props.words[4].trim()} ${props.words[5].trim()} ${props.words[6].trim()}`;
     animateButton();
 
-    // -> payment for NFT. if through, mint
-    const txDetails = await payForNft(artCost);
+    const txDetails = await mintNFT(phrase);
     if (txDetails.success) {
       props.resetInputs();
-      const nftTxHash = await axios.post(`${API}/mint`, { addr, phrase });
-      props.setTxHash(txDetails.hash.hash);
+      await axios.post(
+        `${API}/savePhrase`, 
+        { addr, phrase }
+      );
+      props.setTxHash(txDetails.hash);
+      
+      // animate button back to normal
       setBtnActive(false);
-      setBtnValue(<i className="fas fa-check-double" />);
+      setBtnValue(<i className="fas fa-check-circle" />);
       setTimeout(() => { setBtnValue('MINT') }, 3 * 1000);
-
-      // console.log(txDetails.hash.hash);
-      // console.log({ nftTxHash });
     }
     else {
       console.log(txDetails);
+
+      // animate button back to normal
+      setBtnActive(false);
+      setBtnValue(<i className="fas fa-times-circle" />);
+      setTimeout(() => { setBtnValue('MINT') }, 3 * 1000);
     }
   }
 
+  
   return (
     <div className={styles['form']}>
       <div className={styles['warning']}>

@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const { mintNFT } = require('./scripts/mint-nft.js');
 const { connectDb } = require('./scripts/dbConnect.js');
 const { Phrase } = require('./scripts/schema.js');
 
@@ -17,16 +16,18 @@ app.get('/', (req, res) => {
   res.send('NFT contract Homepage');
 });
 
-app.post('/mint', async (req, res) => {
+app.post('/savePhrase', async (req, res) => {
   const addr = req.body.addr;
   const phrase = req.body.phrase;
 
-  const txHash = await mintNFT(
-    addr,
-    "https://gateway.pinata.cloud/ipfs/QmYgLMTAvPJpWNZiDGCffJw9zJHR6JNVQTYVPRXY6M8xTb"
-  );
-  Phrase.create({ addr, phrase });
-  return res.send(txHash);
+  // -> save the user's pharse to DB
+  Phrase.create({ addr, phrase })
+  .then(() => {
+    res.json({ 'success': true });
+  })
+  .catch((err) => {
+    res.json({ 'success': false })
+  })
 });
 
 

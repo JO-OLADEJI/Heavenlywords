@@ -14,9 +14,11 @@ contract MyNFT is ERC721URIStorage, Ownable {
     constructor() public ERC721("MyNFT", "NFT") {}
 
     function mintNFT(address recipient, string memory tokenURI)
-        public onlyOwner
+        public payable
         returns (uint256)
     {
+        require(msg.value >= 20000000000000000, "Not enough ETH sent; check price!");
+
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();

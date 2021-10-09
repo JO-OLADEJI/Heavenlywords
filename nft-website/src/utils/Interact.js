@@ -1,5 +1,12 @@
-import { ethers } from 'ethers';
+import { pinJSONToIPFS } from './Pinata.js';
 
+require('dotenv').config();
+const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+const web3 = createAlchemyWeb3(alchemyKey);
+
+const contractABI = require('../contract-abi.json');
+const contractAddress = "0x492A0297Cf712D5A3AE9aa1b058Cc48a016089E0";
 
 // wallet connection
 export const connectWallet = async () => {
@@ -87,20 +94,71 @@ export const getCurrentWalletConnected = async () => {
 
 
 
-// request for ethereum payment
-export const payForNft = async (ether) => {
-  const storeAddr = "0x7B4af61aCDFB66127d8eE3119f2d49A6a662a367";
+
+// function to handle minting the nft
+export const mintNFT = async (phrase) => {
+
+  // -> error handling
+  const paramsValid = () => {
+    return phrase.trim() === '' ? false : true;
+  }
+
+  if (!paramsValid()) {
+    return {
+      success: false,
+      status: "❗Please make sure at least 3 fields are filled before minting.",
+    };
+  }
+
+
+  // -> make metadata
+  const metadata = { };
+  metadata.name = 'Heavenlywords Collection';
+  metadata.description = phrase;
+  metadata.image = "https://gateway.pinata.cloud/ipfs/Qmf5utYYujKkfCV13KvozKQsUD1EDnmi2x3sGCfarXLdXe";
+  metadata.attributes = [{ 'trait_type': '', 'value': '' }];
+
+
+  // -> make pinata call
+  const pinataResponse = await pinJSONToIPFS(metadata);
+  if (!pinataResponse.success) {
+    return {
+      success: false,
+      status: "😢 Something went wrong while uploading your tokenURI.",
+    };
+  }
+  const tokenURI = pinataResponse.pinataUrl;
+
+
+  // -> load smart contract
+  window.contract = await new web3.eth.Contract(contractABI, contractAddress);
+
+
+  // -> set up your Ethereum transaction
+  const transactionParameters = {
+    to: contractAddress, // Required except during contract publications.
+    from: window.ethereum.selectedAddress, // must match user's active address.
+    'data': window.contract.methods.mintNFT(window.ethereum.selectedAddress, tokenURI).encodeABI(), //make call to NFT smart contract 
+    value: '470DE4DF820000' // require address to pay 0.02 ethers <value encoded to hex>
+  };
+
+  
+  // -> sign the transaction via Metamask
   try {
-    await window.ethereum.send('eth_requestAccounts');
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const tx = await signer.sendTransaction({
-      to: storeAddr,
-      value: ethers.utils.parseEther(ether)
+    const txHash = await window.ethereum.request({
+      method: 'eth_sendTransaction',
+      params: [transactionParameters],
     });
-    return { success: true, hash: tx };
+    return {
+      success: true,
+      status: "✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" + txHash,
+      hash: txHash
+    };
   }
-  catch (err) {
-    return { success: false, err };
+  catch (error) {
+    return {
+      success: false,
+      status: "😥 Something went wrong: " + error.message
+    };
   }
-}
+};
