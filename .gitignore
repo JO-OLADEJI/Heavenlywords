@@ -9,8 +9,8 @@ nft-website/node_modules/
 
 # testing
 /coverage
-nft-contract/artifacts/
-nft-contract/cache/
+# nft-contract/artifacts/
+# nft-contract/cache/
 
 # production
 /build
