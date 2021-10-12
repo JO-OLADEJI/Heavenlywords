@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\Oyeto\\Documents\\programming\\Projects\\web-apps\\Heavenlywords\\nft-contract\\contracts\\MyNFT.sol": {
-      "lastModificationDate": 1633902425148,
-      "contentHash": "19cb5828791496bd64fb374496325878",
+      "lastModificationDate": 1634065952199,
+      "contentHash": "48923b31ff956296f128840abaf70dfe",
       "sourceName": "contracts/MyNFT.sol",
       "solcConfig": {
         "version": "0.8.0",
