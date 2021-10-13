@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import styles from './App.module.css';
-import Form from './components/main/Form.jsx';
-import Header from './components/main/Header.jsx';
-import Nav from './components/main/Nav.jsx';
-import Visual from './components/main/Visual.jsx';
-import TxHash from './components/main/TxHash.jsx';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connectWallet, getCurrentWalletConnected } from './utils/Interact.js';
+import styles from './App.module.css';
+import Mint from './components/pages/Mint.jsx';
+import Admin from './components/pages/Admin.jsx';
+import Nav from './components/main/Nav.jsx';
 
 const App = () => {
-  // form state
-  const [word1, setWord1] = useState('');
-  const [word2, setWord2] = useState('');
-  const [word3, setWord3] = useState('');
-  const [word4, setWord4] = useState('');
-  const [word5, setWord5] = useState('');
-  const [word6, setWord6] = useState('');
-  const [word7, setWord7] = useState('');
-
-  // wallet info state
   const [walletAddress, setWallet] = useState('');
   const [status, setStatus] = useState('');
-  const [txHash, setTxHash] = useState('');
-
 
 
   // listeners
@@ -70,51 +57,33 @@ const App = () => {
     setWallet(walletResponse.address);
   };
 
-  const handleInputChange = (e, fn) => {
-    fn(() => (e.target.value).trim());
-  }
-
-  const handleTxHashChange = (hash) => {
-    setTxHash(() => hash);
-  }
-
-  const resetInputs = () => {
-    setWord1('');
-    setWord2('');
-    setWord3('');
-    setWord4('');
-    setWord5('');
-    setWord6('');
-    setWord7('');
-  }
-
-
 
   return (
-    <div className={styles['App']}>
-      <div className={styles['top-bar']} />
+    <Router>
+      <div className={styles['App']}>
+        <div className={styles['top-bar']} />
 
-      <Nav 
-        walletAddress={walletAddress}
-        onConnectWallet={connectWalletPressed}
-      />
-      <Header />
-      <div className={styles['form-body']}>
-        <Form 
-          words={[word1, word2, word3, word4, word5, word6, word7]}
-          setWords={[setWord1, setWord2, setWord3, setWord4, setWord5, setWord6, setWord7]}
-          handleInputChange={handleInputChange}
-          warning={status}
+        <Nav
           walletAddress={walletAddress}
-          setTxHash={handleTxHashChange}
-          resetInputs={resetInputs}
+          onConnectWallet={connectWalletPressed}
         />
-        <Visual />
+        <Switch>
+          <Route exact path="/">
+            <Mint
+              status={status}
+              walletAddress={walletAddress}
+            />
+          </Route>
+          <Route path="/contract">
+            <Admin
+              walletAddress={walletAddress}
+            />
+          </Route>
+        </Switch>
+
+        <div className={styles['bottom-bar']} />
       </div>
-      {txHash.length > 0 ? <TxHash txHash={txHash} /> : ''}
-      
-      <div className={styles['bottom-bar']} />
-    </div>
+    </Router>
   );
 }
 

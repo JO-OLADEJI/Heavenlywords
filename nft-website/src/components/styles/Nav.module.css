@@ -5,8 +5,25 @@
   padding: 1rem 10vw;
 }
 
+.logo {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+}
+
 .logo h1 {
   font-family: 'Gemunu Libre', sans-serif;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-link {
+  margin-right: .5rem;
+  color: black;
 }
 
 .connect-btn {

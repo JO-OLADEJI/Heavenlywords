@@ -1,0 +1,9 @@
+.mint > h1 {
+  text-align: center;
+}
+
+.form-body {
+  padding: 3rem 20vw;
+  display: flex;
+  justify-content: space-between;
+}
