@@ -1,0 +1,51 @@
+.admin {
+  min-height: 100vh;
+  padding: 3rem 10vw;
+}
+
+.admin h3 {
+  text-align: center;
+}
+
+.admin h5 {
+  /* margin-left: .5rem; */
+  margin-top: 2rem;
+  color: #d3d3d3;
+}
+
+.methods,
+.views {
+  border-radius: .5rem;
+  border: 1px solid #E4761B;
+  padding: .5rem;
+  margin: .5rem 0;
+}
+
+.methods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 2rem;
+}
+
+.views {
+  padding: 2rem .5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.views h3 > i {
+  margin-right: .5rem;
+}
+
+.views h3 {
+  margin-top: .5rem;
+  color: #d3d3d3;
+}
+
+.methods div,
+.methods button,
+.methods h5 {
+  margin-left: 3rem;
+}
+

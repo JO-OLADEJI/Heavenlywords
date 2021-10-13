@@ -61,8 +61,6 @@ const App = () => {
   return (
     <Router>
       <div className={styles['App']}>
-        <div className={styles['top-bar']} />
-
         <Nav
           walletAddress={walletAddress}
           onConnectWallet={connectWalletPressed}
@@ -80,8 +78,6 @@ const App = () => {
             />
           </Route>
         </Switch>
-
-        <div className={styles['bottom-bar']} />
       </div>
     </Router>
   );

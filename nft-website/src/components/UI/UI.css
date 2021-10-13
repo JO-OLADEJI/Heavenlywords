@@ -25,19 +25,19 @@
   top: .7rem;
   left: 1.2rem;
   padding: 0 .5rem;
-  color: #5e5e5e;
+  color: #9c9c9c;
   font-size: .9rem;
   cursor: text;
   transition: top .2s ease-out, left .2s ease-out, font-size .2s ease-out;
 }
 
 .ui-input-field:hover {
-  border: 2px solid #29E268;
+  border: 2px solid #FFC92E;
 }
 
 .ui-input-field:focus {
   outline: none;
-  border: 2px solid #29ABE2;
+  border: 2px solid #E4761B;
 }
 
 .ui-input-field:focus ~ .placeholder,
@@ -46,8 +46,8 @@
   left: .8rem;
   font-size: .7rem;
   font-weight: 600;
-  background-color: white;
-  color: #616161;
+  background-color: #2F3437;
+  color: #9c9c9c;
 }
 
 
@@ -63,7 +63,7 @@
   cursor: pointer;
   margin-left: .5rem;
   border: none;
-  background-color: #29E268;
+  background-color: #E4761B;
   transition: background-color .3s ease-in;
   letter-spacing: .2rem;
   font-weight: bold;
@@ -72,7 +72,7 @@
 }
 
 .ui-button:hover {
-  background-color: #48df7a;
+  background-color: #FF161B;
 }
 
 

@@ -12,20 +12,21 @@
 .image-slider > p {
   text-align: center;
   margin-top: .5rem;
-  font-size: .8rem;
+  font-size: .95rem;
   font-weight: bold;
   font-family: cursive;
+  color: #9c9c9c;
 }
 
 .image-slider i {
   cursor: pointer;
-  color: #cacaca;
+  color: #8b8b8b;
   transition: color .2s ease-in-out;
   font-size: 1.2rem;
 }
 
 .image-slider i:hover {
-  color: #222222;
+  color: #E4761B;
 }
 
 .slider-img {

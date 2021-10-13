@@ -3,14 +3,5 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-}
-
-.top-bar,
-.bottom-bar {
-  background: linear-gradient(90deg, #29E268, #29ABE2);
-  height: .7rem;
-}
-
-.bottom-bar {
-  margin-top: 5rem;
+  background-color: #2F3437;
 }

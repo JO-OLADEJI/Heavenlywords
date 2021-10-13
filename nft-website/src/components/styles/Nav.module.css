@@ -2,13 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 10vw;
+  padding: .5rem 10vw;
 }
 
 .logo {
   display: inline-block;
   text-decoration: none;
   color: black;
+}
+
+.logo img {
+  width: 15rem;
 }
 
 .logo h1 {
@@ -23,7 +27,12 @@
 
 .admin-link {
   margin-right: .5rem;
-  color: black;
+  color: #9c9c9c;
+  transition: color .3s ease-in-out;
+}
+
+.admin-link:hover {
+  color: #E4761B;
 }
 
 .connect-btn {
@@ -32,7 +41,8 @@
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
-  border: 2px solid black;
+  color: #E4761B;
+  border: 2px solid #9c9c9c;
   border-radius: .2rem;
   padding: .5rem 1rem;
   background-color: transparent;
@@ -40,6 +50,7 @@
 }
 
 .connect-btn:hover {
+  color: #E4761B;
   background-color: transparent;
 }
 

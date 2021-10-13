@@ -10,7 +10,7 @@ import discord from '../../assets/discord.png';
 const Header = (props) => {
   return (
     <div className={styles['header']}>
-      <h1>Join the Club!</h1>
+      <h1>Ascend Now!</h1>
       <p>Generate NFT images from a descriptive text.</p>
       <div className={styles['social-links']}>
         <a href="https://shootfish.com">

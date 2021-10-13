@@ -2,13 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Nav.module.css';
 import Button from '../UI/Button.jsx';
+import logo from '../../assets/main-logo.png';
 
 const Nav = (props) => {
   return (
     <div className={styles['nav']}>
       <div>
         <Link to="/" className={styles['logo']}>
-          <h1>Heavenlywords.</h1>
+          <img 
+            src={logo}
+            alt="Heavenlywords" 
+          />
         </Link>
       </div>
       <div className={styles['menu']}>

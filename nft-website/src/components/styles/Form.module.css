@@ -1,7 +1,17 @@
 .form .warning {
-  color: red;
+  color: #E4761B;
   font-size: .75rem;
   font-family: cursive;
+  animation: blink .8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .mint-btn {
@@ -14,8 +24,6 @@
 }
 
 .mint-region i {
-  /* color: #29E268; */
-  /* color: #29ABE2; */
   font-size: 1.3rem;
 }
 
