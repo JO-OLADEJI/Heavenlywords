@@ -1,37 +1,20 @@
 .admin {
   min-height: 100vh;
   padding: 3rem 10vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.admin h3 {
-  text-align: center;
+.admin button {
+  width: 20rem;
+  letter-spacing: normal;
 }
 
 .admin h5 {
-  /* margin-left: .5rem; */
-  margin-top: 2rem;
   color: #d3d3d3;
-}
-
-.methods,
-.views {
-  border-radius: .5rem;
-  border: 1px solid #E4761B;
-  padding: .5rem;
-  margin: .5rem 0;
-}
-
-.methods {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding-bottom: 2rem;
-}
-
-.views {
-  padding: 2rem .5rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .views h3 > i {
@@ -43,9 +26,11 @@
   color: #d3d3d3;
 }
 
-.methods div,
-.methods button,
-.methods h5 {
-  margin-left: 3rem;
+.withdraw,
+.transfer,
+.wl-addr,
+.check-balance,
+.mint-count {
+  margin-bottom: 3rem;
 }
 

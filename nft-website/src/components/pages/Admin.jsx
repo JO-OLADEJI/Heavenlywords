@@ -1,20 +1,44 @@
 import React, { useState } from 'react';
-import { whitelistAddr, transfer, witdraw, checkBal, getTokensMinted } from '../../utils/ContractMethods.js';
+import { whitelistAddr, transfer, withdraw, checkBal, getTokensMinted } from '../../utils/ContractMethods.js';
 import styles from '../styles/Admin.module.css';
 import Button from '../UI/Button.jsx';
 import Input from '../UI/Input.jsx';
 
 const Admin = (props) => {
-  const [balance, setBalance] = useState('-');
-  const [mintCount, setMintCount] = useState('-');
-  const [addrToWhitelist, setAddrToWhitelist] = useState('');
+  const [balance, setBalance] = useState('');
+  const [mintCount, setMintCount] = useState('');
+  const [addrToWhitelist, setAddrToWhitelist] = useState('-');
+
+  const [withdrawAmt, setWithdrawAmt] = useState(0);
+  const [transferAmt, setTransferAmt] = useState(0);
+  const [transferAddr, setTransferAddr] = useState('-');
 
   
   // -> functions
   const whitelistAddrHandler = async (e, address) => {
     e.preventDefault();
     const result = await whitelistAddr(address);
-    console.log(result.status);
+    result.success ? 
+      setAddrToWhitelist(() => '-') : console.log(result.status);
+  }
+
+  const withdrawHandler = async (e, amount) => {
+    e.preventDefault();
+    const result = await withdraw(amount);
+    result.success ? 
+      setWithdrawAmt(() => '-') : console.log(result.status);
+  }
+
+  const transferHandler = async (e, addr, amount) => {
+    e.preventDefault();
+    const result = await transfer(addr, amount);
+    if (result.success) {
+      setTransferAmt(() => 0);
+      setTransferAddr(() => '-');
+    }
+    else {
+      console.log(result.status);
+    }
   }
 
   const checkBalHandler = async (e) => {
@@ -31,40 +55,45 @@ const Admin = (props) => {
       setMintCount(() => request.result) : setMintCount(() => '???');
   }
 
-  const whitelistAddrInputHandler = (e) => {
-    setAddrToWhitelist(e.target.value);
-  }
 
   return (
     <div className={styles['admin']}>
 
       <div className={styles['methods']}>
-        <div className={styles['transfer']}>
-          <h5>Transfer ETH</h5>
-          <Input 
-            placeholder="eth address"
-          />
-          <Input 
-            placeholder="eth value"
-          />
-          <Button>
-            Transfer
-          </Button>
-        </div>
         <div className={styles['withdraw']}>
           <h5>Withdraw ETH</h5>
           <Input 
-            placeholder="eth value"
+            value={withdrawAmt}
+            onChange={(e) => setWithdrawAmt(e.target.value)}
+            placeholder="wei value"
           />
-          <Button>
+          <Button
+            onClick={(e) => withdrawHandler(e, withdrawAmt)}>
             Withdraw
+          </Button>
+        </div>
+        <div className={styles['transfer']}>
+          <h5>Transfer ETH</h5>
+          <Input 
+            value={transferAddr}
+            onChange={(e) => setTransferAddr(e.target.value)}
+            placeholder="eth address"
+          />
+          <Input 
+            value={transferAmt}
+            onChange={(e) => setTransferAmt(e.target.value)}
+            placeholder="wei value"
+          />
+          <Button
+            onClick={(e) => transferHandler(e, transferAddr, transferAmt)}>
+            Transfer
           </Button>
         </div>
         <div className={styles['wl-addr']}>
           <h5>Whitelist Address</h5>
           <Input 
             value={addrToWhitelist}
-            onChange={whitelistAddrInputHandler}
+            onChange={(e) => setAddrToWhitelist(e.target.value)}
             placeholder="eth address"
           />
           <Button
@@ -74,8 +103,10 @@ const Admin = (props) => {
         </div>
       </div>
 
+
       <div className={styles['views']}>
         <div className={styles['check-balance']}>
+          <h5>Contract ETH balance</h5>
           <Button
             onClick={(e) => checkBalHandler(e)}>
             Check Balance
@@ -86,9 +117,10 @@ const Admin = (props) => {
           </h3>
         </div>
         <div className={styles['mint-count']}>
+          <h5>Total tokens minted</h5>
           <Button
             onClick={(e) => mintCountHandler(e)}>
-            Tokens Minted(n)
+            Get Count
           </Button>
           <h3>
             <i className="fas fa-flag" />

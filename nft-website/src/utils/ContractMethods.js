@@ -9,7 +9,7 @@ const contractAddress = "0xc5a86FCfbC84BB38F8D0B261395Ab48A72138Cfb";
 
 
 
-export const transfer = async (addr, amount) => {
+export const withdraw = async (amount) => {
   // -> load smart contract
   window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
@@ -17,7 +17,7 @@ export const transfer = async (addr, amount) => {
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
-    'data': window.contract.methods.transferEther(addr, amount).encodeABI(), //make call to NFT smart contract 
+    'data': window.contract.methods.withdrawEther(amount).encodeABI(), //make call to NFT smart contract 
   };
 
   // -> sign the transaction via Metamask
@@ -42,7 +42,7 @@ export const transfer = async (addr, amount) => {
 
 
 
-export const witdraw = async (amount) => {
+export const transfer = async (addr, amount) => {
   // -> load smart contract
   window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
@@ -50,7 +50,7 @@ export const witdraw = async (amount) => {
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
-    'data': window.contract.methods.withdrawEther(amount).encodeABI(), //make call to NFT smart contract 
+    'data': window.contract.methods.transferEther(addr, amount).encodeABI(), //make call to NFT smart contract 
   };
 
   // -> sign the transaction via Metamask
