@@ -1,10 +1,8 @@
-//Contract based on [https://docs.openzeppelin.com/contracts/3.x/erc721](https://docs.openzeppelin.com/contracts/3.x/erc721)
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-// import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract MyNFT is ERC721URIStorage {
@@ -13,62 +11,109 @@ contract MyNFT is ERC721URIStorage {
     Counters.Counter private _tokenIds;
     
     
-    
     // -> contract variables
     bool public presale = true;
     bool public paused = false;
     uint256 public maxSupply = 7777;
     uint256 public cost = 0.07 ether;
-    address contractOwner = msg.sender;
+    string public initialURI = '';
+    uint256 private revealedTokens = 0;
+    address private contractOwner = msg.sender;
+    mapping (address => bool) public admins;
     mapping (address => bool) public whitelist;
+    mapping (uint256 => string) public idToUri;
     
 
-
     // -> contract constructor
-    constructor() public ERC721("Heavenlywords", "NFT") {}
+    constructor() ERC721("Heavenlywords", "HWs") {
+        admins[msg.sender] = true;
+    }
 
+
+    // -> modifiers
+    modifier onlyOwner {
+        require(msg.sender == contractOwner);
+        _;
+    }
+
+    modifier onlyAdmin {
+        require(admins[msg.sender]);
+        _;
+    }
 
 
     // -> contract methods
-    function mintNFT(address _recipient, string memory _tokenURI)
-        public payable
+    function mintNFT(address _recipient)
+        public 
+        payable
         returns (uint256)
     {
-        if (presale)
-        {
-            // check if the address is whitelisted
-            require(isAddressWhitelisted(_recipient));
-        }
-        
         require(!paused, 'Minting is paused');
-        require(msg.value >= cost, 'Not enough ETH sent; check price!');
+        
+        if (msg.sender != contractOwner)
+        {
+            if (presale)
+            {
+                require(isWhitelisted(_recipient));
+            }
+            require(msg.value >= cost, 'Not enough ETH sent; check price!');
+        }
 
         _tokenIds.increment();
-
         uint256 newItemId = _tokenIds.current();
-        
-        // check if tokens are not up to max supply
         require(newItemId <= maxSupply);
-        
         _mint(_recipient, newItemId);
-        _setTokenURI(newItemId, _tokenURI);
+        _setTokenURI(newItemId, initialURI);
+        idToUri[newItemId] = initialURI;
 
         return newItemId;
     }
     
     
-    
-    function updateNFT(uint256 _tokenID, string memory _tokenURI)
+    function updateURIs(uint256[] memory _IDs, string[] memory _URIs)
         public
+        onlyAdmin
     {
-        require(msg.sender == contractOwner);
-        _setTokenURI(_tokenID, _tokenURI);
+        require(_IDs.length == _URIs.length);
+        for(uint256 i = 0; i < _IDs.length; i++)
+        {
+            idToUri[_IDs[i]] = _URIs[i];
+        }
+    }
+    
+    
+    function updateOneURI(uint256 _ID, string memory _URI)
+        public
+        onlyAdmin
+    {
+        idToUri[_ID] = _URI;
     }
 
 
-
-    function withdrawEther(uint256 _amount) 
+    function reveal()
         public
+        onlyAdmin
+    {
+        revealedTokens++;
+        for(uint256 i = revealedTokens; i <= _tokenIds.current(); i++)
+        {
+            _setTokenURI(i, idToUri[i]);
+        }
+        revealedTokens = _tokenIds.current();
+    }
+    
+    
+    function revealOne(uint256 _ID)
+        public
+        onlyAdmin
+    {
+        _setTokenURI(_ID, idToUri[_ID]);
+    }
+
+
+    function withdraw(uint256 _amount)
+        public
+        onlyOwner
     {
         require(msg.sender == contractOwner);
         payable(msg.sender).transfer(_amount);
@@ -76,93 +121,186 @@ contract MyNFT is ERC721URIStorage {
     
     
     
-    function transferEther(address payable _addr, uint256 _amount) 
+    function transfer(address payable _addr, uint256 _amount) 
         public
+        onlyOwner
     {
         require(msg.sender == contractOwner);
         _addr.transfer(_amount);
     }
     
     
-    
-    function checkBalance() 
-        public view 
+    function getBalance() 
+        public 
+        view 
+        onlyAdmin
         returns(uint256) 
     {
         require(msg.sender == contractOwner);
         return(address(this).balance);
     }
+
+
+    function getInitialURI()
+        public
+        view
+        returns(string memory)
+    {
+        return initialURI;
+    }
+
+
+    function setInitialURI(string memory _newURI)
+        public
+        onlyAdmin
+    {
+        initialURI = _newURI;
+    }
+
+
+    function getMaxSupply()
+        public
+        view
+        returns(uint256)
+    {
+        return maxSupply;
+    }
+
+
+    function setMaxSupply(uint256 _value)
+        public
+        onlyOwner
+    {
+        maxSupply = _value;
+    }
+
     
+    function getRevaledTokens()
+        public
+        view
+        returns(uint256) 
+    {
+        return revealedTokens;
+    }
+
+
+    function getOwner()
+        public
+        view
+        returns(address)
+    {
+        return contractOwner;
+    }
+
+
+    function getPresale()
+        public
+        view
+        returns(bool)
+    {
+        return presale;
+    }
     
     
     function setPresale(bool _value)
         public
+        onlyAdmin
     {
-        require(msg.sender == contractOwner);
         presale = _value;
     }
-    
+
+
+    function getPaused()
+        public
+        view
+        returns(bool)
+    {
+        return paused;
+    }
     
     
     function setPaused(bool _value)
         public
+        onlyAdmin
     {
-        require(msg.sender == contractOwner);
         paused = _value;
     }
     
+
+    function getCost()
+        public
+        view
+        returns(uint256)
+    {
+        return cost;
+    }
     
     
     function setCost(uint256 _newCost) 
         public
+        onlyOwner
     {
-        require(msg.sender == contractOwner);
         cost = _newCost;
     }
     
     
-    
     function getMintCount()
-        public view
+        public 
+        view
+        onlyAdmin
         returns(uint256)
     {
-        require(msg.sender == contractOwner);
         return _tokenIds.current();
     }
     
     
-    
     function whitelistAddress(address _addr)
         public
+        onlyAdmin
     {
-        require(msg.sender == contractOwner);
         whitelist[_addr] = true;
     }
     
     
-    
-    function isAddressWhitelisted(address _addr)
-        public view
+    function removeFromWhitelist(address _addr)
+        public
+        onlyAdmin
+    {
+        whitelist[_addr] = false;
+    }
+
+
+    function setAdmin(address _addr)
+        public
+        onlyOwner
+    {
+        admins[_addr] = true;
+    }
+
+
+    function removeAdmin(address _addr)
+        public
+        onlyOwner
+    {
+        admins[_addr] = false;
+    }
+
+
+    function isAdmin(address _addr)
+        public
+        view
         returns(bool)
     {
-        require(msg.sender == contractOwner);
+        return admins[_addr];
+    }
+    
+    
+    function isWhitelisted(address _addr)
+        public 
+        view
+        returns(bool)
+    {
         return whitelist[_addr];
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
