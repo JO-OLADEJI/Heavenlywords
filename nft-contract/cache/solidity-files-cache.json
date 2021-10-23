@@ -466,8 +466,8 @@
       ]
     },
     "C:\\Users\\Oyeto\\Documents\\programming\\Projects\\mobile-apps\\Heavenlywords\\nft-contract\\contracts\\MyNFT.sol": {
-      "lastModificationDate": 1635014250426,
-      "contentHash": "939ac5f34fc5c44594a0dd29822385ba",
+      "lastModificationDate": 1635014881540,
+      "contentHash": "a285a38dbea9edc9df3ac3094e1a58f8",
       "sourceName": "contracts/MyNFT.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -500,7 +500,7 @@
         "^0.8.0"
       ],
       "artifacts": [
-        "MyNFT"
+        "Heavenlywords"
       ]
     },
     "C:\\Users\\Oyeto\\Documents\\programming\\Projects\\mobile-apps\\Heavenlywords\\nft-contract\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\ERC721.sol": {
