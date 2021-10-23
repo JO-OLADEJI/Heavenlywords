@@ -4,7 +4,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 
 const contractABI = require('../contract-abi.json');
-const contractAddress = "0xc5a86FCfbC84BB38F8D0B261395Ab48A72138Cfb";
+const contractAddress = "0xcBE3680b264c1999761668D1D9D1037be79CC580";
 
 
 
