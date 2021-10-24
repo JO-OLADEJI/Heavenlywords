@@ -16,7 +16,7 @@ contract Heavenlywords is ERC721URIStorage {
     bool public paused = false;
     uint256 public maxSupply = 7777;
     uint256 public cost = 0.07 ether;
-    string public initialURI = '';
+    string public initialURI = 'https://gateway.pinata.cloud/ipfs/QmR19vvqHwetfFprdC3VsVCdJgNVFTMeCbucTWhPvQ1Pf1';
     uint256 private revealedTokens = 0;
     address private contractOwner = msg.sender;
     mapping (address => bool) public admins;
@@ -43,7 +43,7 @@ contract Heavenlywords is ERC721URIStorage {
 
 
     // -> contract methods
-    function mintNFT(address _recipient)
+    function mint(address _recipient)
         public 
         payable
         returns (uint256)
@@ -115,7 +115,6 @@ contract Heavenlywords is ERC721URIStorage {
         public
         onlyOwner
     {
-        require(msg.sender == contractOwner);
         payable(msg.sender).transfer(_amount);
     }
     
@@ -125,7 +124,6 @@ contract Heavenlywords is ERC721URIStorage {
         public
         onlyOwner
     {
-        require(msg.sender == contractOwner);
         _addr.transfer(_amount);
     }
     
@@ -136,7 +134,6 @@ contract Heavenlywords is ERC721URIStorage {
         onlyAdmin
         returns(uint256) 
     {
-        require(msg.sender == contractOwner);
         return(address(this).balance);
     }
 
@@ -262,11 +259,33 @@ contract Heavenlywords is ERC721URIStorage {
     }
     
     
+    function whitelistBatch(address[] memory _addrs)
+        public
+        onlyAdmin
+    {
+        for(uint256 i = 0; i < _addrs.length; i++)
+        {
+            whitelist[_addrs[i]] = true;
+        }
+    }
+    
+    
     function removeFromWhitelist(address _addr)
         public
         onlyAdmin
     {
         whitelist[_addr] = false;
+    }
+    
+    
+    function removeBatch(address[] memory _addrs)
+        public
+        onlyAdmin
+    {
+        for(uint256 i = 0; i < _addrs.length; i++)
+        {
+            whitelist[_addrs[i]] = false;
+        }
     }
 
 
