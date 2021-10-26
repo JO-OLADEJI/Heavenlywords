@@ -22,6 +22,8 @@ contract Heavenlywords is ERC721URIStorage {
     mapping (address => bool) public admins;
     mapping (address => bool) public whitelist;
     mapping (uint256 => string) public idToUri;
+    mapping (uint256 => string) public idToImageDesc;
+    mapping (uint256 => address) public idToAddress;
     
 
     // -> contract constructor
@@ -43,7 +45,7 @@ contract Heavenlywords is ERC721URIStorage {
 
 
     // -> contract methods
-    function mint(address _recipient)
+    function mint(address _recipient, string memory _imageDesc)
         public 
         payable
         returns (uint256)
@@ -62,9 +64,12 @@ contract Heavenlywords is ERC721URIStorage {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         require(newItemId <= maxSupply);
+        
         _mint(_recipient, newItemId);
         _setTokenURI(newItemId, initialURI);
         idToUri[newItemId] = initialURI;
+        idToImageDesc[newItemId] = _imageDesc;
+        idToAddress[newItemId] = _recipient;
 
         return newItemId;
     }
@@ -248,6 +253,33 @@ contract Heavenlywords is ERC721URIStorage {
         returns(uint256)
     {
         return _tokenIds.current();
+    }
+    
+    
+    function getImageDescById(uint256 _id)
+        public
+        view
+        returns(string memory)
+    {
+        return idToImageDesc[_id];
+    }
+    
+    
+    function getUriById(uint256 _id)
+        public
+        view
+        returns(string memory)
+    {
+        return idToUri[_id];
+    }
+    
+    
+    function getAddressById(uint256 _id)
+        public
+        view
+        returns(address)
+    {
+        return idToAddress[_id];
     }
     
     

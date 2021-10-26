@@ -466,8 +466,8 @@
       ]
     },
     "C:\\Users\\Oyeto\\Documents\\programming\\Projects\\mobile-apps\\Heavenlywords\\nft-contract\\contracts\\MyNFT.sol": {
-      "lastModificationDate": 1635103904033,
-      "contentHash": "d6570bac92263e1cf3eee44105b4ac6a",
+      "lastModificationDate": 1635270173146,
+      "contentHash": "b296d5ff2289f42b477467ad74c33dcf",
       "sourceName": "contracts/MyNFT.sol",
       "solcConfig": {
         "version": "0.8.0",
