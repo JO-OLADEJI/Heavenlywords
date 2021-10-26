@@ -1,10 +1,9 @@
-import BN from 'bn.js';
 require('dotenv').config();
 const alchemyKey = process.env.REACT_APP_ALCHEMY_URL;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 const contractABI = require('../contract-abi.json');
-const contractAddress = "0xf70185778Cb09Ce32a3aa3EC8143e9093c316bA2";
+const contractAddress = "0xF62275348b896d29F8e4b763dcFe30D0d8B9fa57";
 
 
 // -> contract view functions
@@ -198,11 +197,53 @@ export const getMintCount = async () => {
 
 
 
-export const getImageDesc = async (id) => {
+export const getImageDescById = async (id) => {
   const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
 
   try {
-    const value = await heavenlywords.methods.getImageDesc(id).call({ from: window.ethereum.selectedAddress });
+    const value = await heavenlywords.methods.getImageDescById(id).call({ from: window.ethereum.selectedAddress });
+    return {
+      success: true,
+      result: value
+    };
+  }
+  catch (err) {
+    return {
+      success: false,
+      result: err
+    };
+  }
+}
+
+
+
+
+export const getUriById = async (id) => {
+  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
+
+  try {
+    const value = await heavenlywords.methods.getUriById(id).call({ from: window.ethereum.selectedAddress });
+    return {
+      success: true,
+      result: value
+    };
+  }
+  catch (err) {
+    return {
+      success: false,
+      result: err
+    };
+  }
+}
+
+
+
+
+export const getAddressById = async (id) => {
+  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
+
+  try {
+    const value = await heavenlywords.methods.getAddressById(id).call({ from: window.ethereum.selectedAddress });
     return {
       success: true,
       result: value
