@@ -16,9 +16,10 @@ const Nav = (props) => {
         </Link>
       </div>
       <div className={styles['menu']}>
-        <Link to="/contract" className={styles['admin-link']}>
+        {/* <Link to="/contract" className={styles['admin-link']}>
           <i className="fas fa-user-cog" />
-        </Link>
+        </Link> */}
+        { props.asyncOperation ? <i className={`fas fa-sync-alt ${styles['spinner']}`} /> : '' }
         <Button
           className={styles['connect-btn']}
           onClick={(e) => props.onConnectWallet(e)}>

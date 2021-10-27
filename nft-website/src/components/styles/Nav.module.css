@@ -3,6 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: .5rem 10vw;
+  /* position: sticky;
+  top: 0; */
 }
 
 .logo {
@@ -23,6 +25,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.menu > i {
+  margin-right: .5rem;
+  color: white;
+}
+
+.spinner {
+  animation: spin .5s linear infinite;
+  transition: display .2s ease-in;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 }
 
 .admin-link {

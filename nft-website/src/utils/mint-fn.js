@@ -10,7 +10,7 @@ const contractAddress = "0xF62275348b896d29F8e4b763dcFe30D0d8B9fa57";
 
 
 
-export const mint = async () => {
+export const mint = async (imageDesc) => {
   const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
 
   // -> contract info
@@ -21,8 +21,8 @@ export const mint = async () => {
   const transactionParameters = {
     to: contractAddress,
     from: window.ethereum.selectedAddress,
-    'data': heavenlywords.methods.mint(window.ethereum.selectedAddress).encodeABI(),
-    value: ((window.ethereum.selectedAddress).toLowerCase() === owner) ? 0 : weiValue
+    'data': heavenlywords.methods.mint(window.ethereum.selectedAddress, imageDesc).encodeABI(),
+    value: ((window.ethereum.selectedAddress).toLowerCase() == owner) ? 0 : weiValue
   };
 
   // -> sign the transaction via Metamask

@@ -9,6 +9,7 @@ import Nav from './components/main/Nav.jsx';
 const App = () => {
   const [walletAddress, setWallet] = useState('');
   const [status, setStatus] = useState('');
+  const [asyncOperation, setAsyncOperation] = useState(false);
 
 
   // listeners
@@ -23,14 +24,14 @@ const App = () => {
           setStatus("🦊 Connect to Metamask using the top right button.");
         }
       });
-    } else {
+    } 
+    else {
       setStatus(
         <p>
           {" "}
           🦊{" "}
           <a target="_blank" href={`https://metamask.io/download.html`} rel="noreferrer">
-            You must install Metamask, a virtual Ethereum wallet, in your
-            browser.
+            You must install Metamask, a virtual Ethereum wallet, in your browser.
           </a>
         </p>
       );
@@ -63,6 +64,7 @@ const App = () => {
       <div className={styles['App']}>
         <Nav
           walletAddress={walletAddress}
+          asyncOperation={asyncOperation}
           onConnectWallet={connectWalletPressed}
         />
         <Switch>
@@ -72,9 +74,10 @@ const App = () => {
               walletAddress={walletAddress}
             />
           </Route>
-          <Route path="/contract">
+          <Route path="/admin">
             <Admin
               walletAddress={walletAddress}
+              setAsyncOperation={setAsyncOperation}
             />
           </Route>
         </Switch>

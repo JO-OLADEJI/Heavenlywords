@@ -10,6 +10,8 @@ const Input = (props) => {
         id={id}
         className={`ui-input-field ${props.className}`}
         type={props.type || 'text'}
+        min={props.min}
+        max={props.max}
         placeholder=" "
         value={props.value}
         onChange={props.onChange}

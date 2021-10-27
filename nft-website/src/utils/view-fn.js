@@ -1,3 +1,4 @@
+import BN from 'bn.js';
 require('dotenv').config();
 const alchemyKey = process.env.REACT_APP_ALCHEMY_URL;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
@@ -12,10 +13,15 @@ export const getBalance = async () => {
 
   try {
     const bal = await heavenlywords.methods.getBalance().call({ from: window.ethereum.selectedAddress });
+    const weiValue = await new BN(bal, 10);
+    const oneGwei = new BN('1000000000', 10);
+    const gweiValue = await weiValue.div(oneGwei).toString(10);
+    const oneEth = 1000000000;
+    const ethValue = await parseInt(gweiValue) / oneEth;
 
     return {
       success: true,
-      result: bal.toString()
+      result: ethValue
     };
   }
   catch (err) {
