@@ -17,17 +17,16 @@ contract Heavenlywords is ERC721URIStorage {
     uint256 public maxSupply = 7777;
     uint256 public cost = 0.07 ether;
     string public initialURI = 'https://gateway.pinata.cloud/ipfs/QmR19vvqHwetfFprdC3VsVCdJgNVFTMeCbucTWhPvQ1Pf1';
-    uint256 private revealedTokens = 0;
-    address private contractOwner = msg.sender;
+    // uint256 private revealedTokens = 0;
+    address public contractOwner;
     mapping (address => bool) public admins;
     mapping (address => bool) public whitelist;
-    mapping (uint256 => string) public idToUri;
     mapping (uint256 => string) public idToImageDesc;
-    mapping (uint256 => address) public idToAddress;
     
 
     // -> contract constructor
     constructor() ERC721("Heavenlywords", "HWs") {
+        contractOwner = msg.sender;
         admins[msg.sender] = true;
     }
 
@@ -67,10 +66,7 @@ contract Heavenlywords is ERC721URIStorage {
         
         _mint(_recipient, newItemId);
         _setTokenURI(newItemId, initialURI);
-        idToUri[newItemId] = initialURI;
         idToImageDesc[newItemId] = _imageDesc;
-        idToAddress[newItemId] = _recipient;
-
         return newItemId;
     }
     
@@ -82,7 +78,7 @@ contract Heavenlywords is ERC721URIStorage {
         require(_IDs.length == _URIs.length);
         for(uint256 i = 0; i < _IDs.length; i++)
         {
-            idToUri[_IDs[i]] = _URIs[i];
+            _setTokenURI(_IDs[i], _URIs[i]);
         }
     }
     
@@ -91,28 +87,7 @@ contract Heavenlywords is ERC721URIStorage {
         public
         onlyAdmin
     {
-        idToUri[_ID] = _URI;
-    }
-
-
-    function reveal()
-        public
-        onlyAdmin
-    {
-        revealedTokens++;
-        for(uint256 i = revealedTokens; i <= _tokenIds.current(); i++)
-        {
-            _setTokenURI(i, idToUri[i]);
-        }
-        revealedTokens = _tokenIds.current();
-    }
-    
-    
-    function revealOne(uint256 _ID)
-        public
-        onlyAdmin
-    {
-        _setTokenURI(_ID, idToUri[_ID]);
+        _setTokenURI(_ID, _URI);
     }
 
 
@@ -174,15 +149,6 @@ contract Heavenlywords is ERC721URIStorage {
         onlyOwner
     {
         maxSupply = _value;
-    }
-
-    
-    function getRevaledTokens()
-        public
-        view
-        returns(uint256) 
-    {
-        return revealedTokens;
     }
 
 
@@ -262,24 +228,6 @@ contract Heavenlywords is ERC721URIStorage {
         returns(string memory)
     {
         return idToImageDesc[_id];
-    }
-    
-    
-    function getUriById(uint256 _id)
-        public
-        view
-        returns(string memory)
-    {
-        return idToUri[_id];
-    }
-    
-    
-    function getAddressById(uint256 _id)
-        public
-        view
-        returns(address)
-    {
-        return idToAddress[_id];
     }
     
     

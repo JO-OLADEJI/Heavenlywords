@@ -7,12 +7,9 @@ import {
   getOwner, 
   getInitialURI, 
   getMaxSupply,
-  getRevaledTokens,
   getPresale,
   getPaused,
   getImageDescById,
-  getUriById,
-  getAddressById,
   isAdmin,
   isWhitelisted
 } from '../../utils/view-fn.js';

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import {
-  reveal,
   updateOneURI,
   whitelistAddress
 } from '../../utils/admin-fn.js'
@@ -87,20 +86,6 @@ const ContractFunctions = (props) => {
             console.log(result);
           }}>
           Update
-        </Button>
-      </div>
-
-      <div className={styles['reveal-arts']}>
-        <h5>Reveal <i className="fas fa-eye" /> updated images</h5>
-        <Button
-          onClick={async (e) => {
-            e.preventDefault();
-            props.setAsyncOperation(true);
-            const res = await reveal();
-            if (res) props.setAsyncOperation(false);
-            console.log(res);
-          }}>
-          Reveal
         </Button>
       </div>
     </section>

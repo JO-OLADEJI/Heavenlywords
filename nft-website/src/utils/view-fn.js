@@ -4,7 +4,7 @@ const alchemyKey = process.env.REACT_APP_ALCHEMY_URL;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 const contractABI = require('../contract-abi.json');
-const contractAddress = "0xF62275348b896d29F8e4b763dcFe30D0d8B9fa57";
+const contractAddress = "0xF4bab693a5C95Bcd23F0504D37337b45EF801b42";
 
 
 // -> contract view functions
@@ -61,27 +61,6 @@ export const getMaxSupply = async () => {
 
   try {
     const value = await heavenlywords.methods.getMaxSupply().call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
-export const getRevaledTokens = async () => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getRevaledTokens().call({ from: window.ethereum.selectedAddress });
     return {
       success: true,
       result: value
@@ -208,48 +187,6 @@ export const getImageDescById = async (id) => {
 
   try {
     const value = await heavenlywords.methods.getImageDescById(id).call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
-export const getUriById = async (id) => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getUriById(id).call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
-export const getAddressById = async (id) => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getAddressById(id).call({ from: window.ethereum.selectedAddress });
     return {
       success: true,
       result: value
