@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '../styles/Landing.module.css';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../main/ImageSlider.jsx';
-import Footer from '../main/Footer.jsx';
 import anonymous from '../../assets/anon.jpg';
 
 const Landing = (props) => {
@@ -55,13 +54,11 @@ const Landing = (props) => {
               src={anonymous} 
               alt="josh's avatar" 
             />
-            <h3>Josh</h3>
+            <h3>Josh - dev</h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, accusamus!</p>
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

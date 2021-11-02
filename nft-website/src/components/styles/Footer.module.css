@@ -1,4 +1,45 @@
 .footer {
   text-align: center;
   margin-top: 5rem;
+  padding: 2rem;
+  background-color: #131313;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
+
+.footer * {
+  background-color: #131313;
+}
+
+.link,
+.ex-link {
+  display: inline-block;
+  margin: 0 1.5rem;
+  color: #d3d3d3;
+  text-decoration: none;
+}
+
+.ex-link i {
+  font-size: 1.2rem;
+}
+
+.mint-ref {
+  cursor: pointer;
+  color: #E4761B;
+  border: 2px solid #9c9c9c;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  background-color: transparent;
+  letter-spacing: .01rem;
+  margin: 2.5rem;
+  font-weight: 500;
+}
+
+.mint-ref i {
+  margin-left: .5rem;
+}
+
+.copyright {
+  color: #afafaf;
+  font-size: .8rem;
 }
