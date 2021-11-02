@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .5rem 10vw;
+  padding: .5rem 5vw;
   /* position: sticky;
   top: 0; */
 }
@@ -21,13 +21,25 @@
   font-family: 'Gemunu Libre', sans-serif;
 }
 
-.menu {
+.link,
+.ex-link {
+  display: inline-block;
+  margin: 0 1.5rem;
+  color: #d3d3d3;
+  text-decoration: none;
+}
+
+.ex-link i {
+  font-size: 1.2rem;
+}
+
+.btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.menu > i {
+.btns > i {
   margin-right: .5rem;
   color: white;
 }
@@ -64,7 +76,7 @@
   cursor: pointer;
   color: #E4761B;
   border: 2px solid #9c9c9c;
-  border-radius: .2rem;
+  border-radius: .5rem;
   padding: .5rem 1rem;
   background-color: transparent;
   letter-spacing: .01rem;

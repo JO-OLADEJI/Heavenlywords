@@ -15,10 +15,38 @@ const Nav = (props) => {
           />
         </Link>
       </div>
-      <div className={styles['menu']}>
-        {/* <Link to="/contract" className={styles['admin-link']}>
-          <i className="fas fa-user-cog" />
-        </Link> */}
+
+      <div className={styles['links']}>
+        <Link to="/" className={styles['link']}>
+          Home
+        </Link>
+        <Link to="/mint" className={styles['link']}>
+          Mint
+        </Link>
+        <a
+          className={styles['ex-link']}
+          target="_blank"
+          rel="noreferrer"
+          href="https://testnets.opensea.io/collection/heavenlywords-v3">
+          Opensea
+        </a>
+        <a
+          className={styles['ex-link']}
+          target="_blank"
+          rel="noreferrer"
+          href="https://discord.gg/ZtZK4FCn">
+          <i className="fab fa-discord" />
+        </a>
+        <a
+          className={styles['ex-link']}
+          target="_blank"
+          rel="noreferrer"
+          href="https://twitter.com/GRITCULT/status/1440111086162911232?s=19">
+          <i className="fab fa-twitter" />
+        </a>
+      </div>
+
+      <div className={styles['btns']}>
         { props.asyncOperation ? <i className={`fas fa-sync-alt ${styles['spinner']}`} /> : '' }
         <Button
           className={styles['connect-btn']}
