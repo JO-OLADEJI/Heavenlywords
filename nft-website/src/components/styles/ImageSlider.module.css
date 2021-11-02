@@ -1,6 +1,7 @@
 .image-slider {
-  width: 20rem;
+  width: 27rem;
   margin: auto;
+  min-height: 27rem;
 }
 
 .image-slider div {
@@ -12,17 +13,16 @@
 .image-slider > p {
   text-align: center;
   margin-top: .5rem;
-  font-size: .95rem;
-  font-weight: bold;
-  font-family: cursive;
-  color: #9c9c9c;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #E4761B;
 }
 
 .image-slider i {
   cursor: pointer;
   color: #8b8b8b;
   transition: color .2s ease-in-out;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .image-slider i:hover {
@@ -30,7 +30,7 @@
 }
 
 .slider-img {
-  width: 17rem;
+  width: 23rem;
   border-radius: .5rem;
 }
 

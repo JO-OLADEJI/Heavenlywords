@@ -7,14 +7,3 @@
 .header > p {
   color: #9c9c9c;
 }
-
-.social-links img {
-  width: 2rem;
-  border-radius: 50%;
-  box-shadow: 0 1px 1px #0000004f;
-}
-
-.social-links a {
-  display: inline-block;
-  margin: .8rem 1.5rem;
-}

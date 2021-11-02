@@ -1,0 +1,87 @@
+.landing {
+  padding: 0 10vw;
+}
+
+.landing h1 {
+  color: #d3d3d3;
+  font-size: 2rem;
+}
+
+.landing p {
+  color: #9c9c9c;
+  font-size: 1.1rem;
+}
+
+.hero {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.hero h1 {
+  margin-bottom: .5rem;
+}
+
+.mint-ref {
+  cursor: pointer;
+  color: #E4761B;
+  border: 2px solid #9c9c9c;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  background-color: transparent;
+  letter-spacing: .01rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.mint-ref i {
+  margin-left: .5rem;
+}
+
+.carousel {
+  text-align: center;
+  padding: 0 5vw 2rem 5vw ;
+}
+
+.carousel > p {
+  padding: 2rem 5vw;
+}
+
+.team {
+  margin: 2rem 0;
+}
+
+.team > h1,
+.team > p {
+  text-align: center;
+}
+
+.team > p {
+  margin-bottom: 2.5rem;
+}
+
+.members {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.member {
+  width: 20rem;
+  text-align: center;
+}
+
+.member img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.member h3 {
+  color: #d3d3d3;
+  font-size: .9rem;
+}
+
+.member p {
+  font-size: .8rem;
+}

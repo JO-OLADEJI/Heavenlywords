@@ -5,6 +5,7 @@ import styles from './App.module.css';
 import Mint from './components/pages/Mint.jsx';
 import Admin from './components/pages/Admin.jsx';
 import Nav from './components/main/Nav.jsx';
+import Landing from './components/pages/Landing.jsx';
 
 const App = () => {
   const [walletAddress, setWallet] = useState('');
@@ -69,6 +70,9 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
+            <Landing />
+          </Route>
+          <Route path="/mint">
             <Mint
               status={status}
               walletAddress={walletAddress}

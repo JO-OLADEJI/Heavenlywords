@@ -60,7 +60,7 @@ const Nav = (props) => {
           ) : (
             <>
               <p>Connect Wallet</p>
-              <i className="fab fa-ethereum" />
+              <i className="fas fa-wallet" />
             </>
           )}
         </Button>
