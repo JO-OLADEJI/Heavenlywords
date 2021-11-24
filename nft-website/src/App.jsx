@@ -44,7 +44,7 @@ const App = () => {
 
   // functions
   useEffect(() => {
-    const getWalletInfo = async () => {
+    async function getWalletInfo() {
       const { address, status } = await getCurrentWalletConnected();
       setWallet(address);
       setStatus(status);

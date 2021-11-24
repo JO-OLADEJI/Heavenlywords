@@ -1,0 +1,77 @@
+.details {
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+  padding: 2rem 5vw;
+  text-align: center;
+  border: 2px solid #E4761B;
+  border-radius: 1rem;
+}
+
+.details h1 {
+  color: #d3d3d3;
+  font-size: 2rem;
+}
+
+.details p {
+  color: #9c9c9c;
+  font-size: 1.1rem;
+  margin: .3rem 0;
+}
+
+.details i {
+  color: #d3d3d3;
+}
+
+.heading {
+  text-align: center;
+  color: #d3d3d3;
+  margin-bottom: 1rem;
+}
+
+.details .price {
+  font-weight: bold;
+}
+
+.countdown-timer {
+  display:  flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 5rem;
+}
+
+.countdown-timer p {
+  margin-top: .5rem;
+  font-family: cursive;
+}
+
+.details .blink {
+  color: #E4761B;
+  font-family: cursive;
+  animation: blink .8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.mint-ref {
+  cursor: pointer;
+  color: #E4761B;
+  border: 2px solid #9c9c9c;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  background-color: transparent;
+  letter-spacing: .01rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.mint-ref i {
+  color: #E4761B;
+  margin-left: .5rem;
+}

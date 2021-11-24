@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/Landing.module.css';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../main/ImageSlider.jsx';
+import Details from '../main/Details.jsx';
 import anonymous from '../../assets/anon.jpg';
 
 const Landing = (props) => {
@@ -29,6 +30,8 @@ const Landing = (props) => {
         <ImageSlider />
       </section>
 
+      <Details />
+
       <section className={styles['team']} id="team">
         <h1>Meet the team.</h1>
         <p>We are commited to making a distinctive contribution in the NFT space.</p>
@@ -52,10 +55,10 @@ const Landing = (props) => {
           <div className={`${styles['josh']} ${styles['member']}`}>
             <img 
               src={anonymous} 
-              alt="josh's avatar" 
+              alt="dev's avatar" 
             />
-            <h3>Josh - dev</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, accusamus!</p>
+            <h3>AnalogDev</h3>
+            <p>Analog by birth, digital by code.</p>
           </div>
         </div>
       </section>
