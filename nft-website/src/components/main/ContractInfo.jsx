@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import { 
   getBalance, 
   getMintCount, 
-  getCost, 
-  getOwner, 
-  getInitialURI, 
-  getMaxSupply,
-  getPresale,
-  getPaused,
+  // getCost, 
+  // getOwner, 
+  // getInitialURI, 
+  // getMaxSupply,
+  // getPresale,
+  // getPaused,
   getImageDescById,
-  isAdmin,
-  isWhitelisted
+  // isAdmin,
+  // isWhitelisted
 } from '../../utils/view-fn.js';
 
 import styles from '../styles/ContractInfo.module.css';
