@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 
 import {
   updateOneURI,
-  whitelistAddress
 } from '../../utils/admin-fn.js'
 
 import {
   withdraw,
-  transfer
+  // transfer
 } from '../../utils/transaction-fn.js';
 
 import styles from '../styles/ContractFunctions.module.css';
@@ -18,7 +17,6 @@ const ContractFunctions = (props) => {
   const [id, setId] = useState('');
   const [ipfsURI, setIpfsURI] = useState('');
   const [withdrawAmt, setWithdrawAmt] = useState();
-  const [addrToWhitelist, setAddrToWhitelist] = useState('');
 
 
   return (
@@ -41,25 +39,6 @@ const ContractFunctions = (props) => {
             console.log(res);
           }}>
           Withdraw
-        </Button>
-      </div>
-
-      <div className={styles['whitelist-addr']}>
-        <h5><i className="fas fa-list-ol" /> Whitelist Address</h5>
-        <Input 
-          value={addrToWhitelist}
-          onChange={(e) => setAddrToWhitelist(e.target.value)}
-          placeholder="eth address"
-        />
-        <Button
-          onClick={async (e) => {
-            e.preventDefault();
-            props.setAsyncOperation(true);
-            const result = await whitelistAddress(addrToWhitelist);
-            if (result) props.setAsyncOperation(false);
-            console.log(result);
-          }}>
-          Whitelist
         </Button>
       </div>
 

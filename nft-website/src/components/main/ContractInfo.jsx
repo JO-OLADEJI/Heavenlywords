@@ -7,11 +7,9 @@ import {
   // getOwner, 
   // getInitialURI, 
   // getMaxSupply,
-  // getPresale,
   // getPaused,
   getImageDescById,
   // isAdmin,
-  // isWhitelisted
 } from '../../utils/view-fn.js';
 
 import styles from '../styles/ContractInfo.module.css';

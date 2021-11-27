@@ -98,27 +98,6 @@ export const getOwner = async () => {
 
 
 
-export const getPresale = async () => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getPresale().call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: ''
-    };
-  }
-}
-
-
-
-
 export const getPaused = async () => {
   const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
 
@@ -208,27 +187,6 @@ export const isAdmin = async (addr) => {
 
   try {
     const value = await heavenlywords.methods.isAdmin(addr).call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
-export const isWhitelisted = async (addr) => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.isWhitelisted(addr).call({ from: window.ethereum.selectedAddress });
     return {
       success: true,
       result: value

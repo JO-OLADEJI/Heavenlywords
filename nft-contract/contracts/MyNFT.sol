@@ -12,15 +12,12 @@ contract Heavenlywords is ERC721URIStorage {
     
     
     // -> contract variables
-    bool public presale = true;
     bool public paused = false;
     uint256 public maxSupply = 7777;
     uint256 public cost = 0.07 ether;
-    string public initialURI = 'https://gateway.pinata.cloud/ipfs/QmR19vvqHwetfFprdC3VsVCdJgNVFTMeCbucTWhPvQ1Pf1';
-    // uint256 private revealedTokens = 0;
+    string public initialURI = 'https://gateway.pinata.cloud/ipfs/QmWqhSGR2eC9bD7ocoEMpNnGRZK875yWxgExwfgm9QVejp';
     address public contractOwner;
     mapping (address => bool) public admins;
-    mapping (address => bool) public whitelist;
     mapping (uint256 => string) public idToImageDesc;
     
 
@@ -53,10 +50,6 @@ contract Heavenlywords is ERC721URIStorage {
         
         if (msg.sender != contractOwner)
         {
-            if (presale)
-            {
-                require(isWhitelisted(_recipient));
-            }
             require(msg.value >= cost, 'Not enough ETH sent; check price!');
         }
 
@@ -161,23 +154,6 @@ contract Heavenlywords is ERC721URIStorage {
     }
 
 
-    function getPresale()
-        public
-        view
-        returns(bool)
-    {
-        return presale;
-    }
-    
-    
-    function setPresale(bool _value)
-        public
-        onlyAdmin
-    {
-        presale = _value;
-    }
-
-
     function getPaused()
         public
         view
@@ -229,44 +205,6 @@ contract Heavenlywords is ERC721URIStorage {
     {
         return idToImageDesc[_id];
     }
-    
-    
-    function whitelistAddress(address _addr)
-        public
-        onlyAdmin
-    {
-        whitelist[_addr] = true;
-    }
-    
-    
-    function whitelistBatch(address[] memory _addrs)
-        public
-        onlyAdmin
-    {
-        for(uint256 i = 0; i < _addrs.length; i++)
-        {
-            whitelist[_addrs[i]] = true;
-        }
-    }
-    
-    
-    function removeFromWhitelist(address _addr)
-        public
-        onlyAdmin
-    {
-        whitelist[_addr] = false;
-    }
-    
-    
-    function removeBatch(address[] memory _addrs)
-        public
-        onlyAdmin
-    {
-        for(uint256 i = 0; i < _addrs.length; i++)
-        {
-            whitelist[_addrs[i]] = false;
-        }
-    }
 
 
     function setAdmin(address _addr)
@@ -291,15 +229,6 @@ contract Heavenlywords is ERC721URIStorage {
         returns(bool)
     {
         return admins[_addr];
-    }
-    
-    
-    function isWhitelisted(address _addr)
-        public 
-        view
-        returns(bool)
-    {
-        return whitelist[_addr];
     }
     
 }
