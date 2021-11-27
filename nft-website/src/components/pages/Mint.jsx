@@ -30,8 +30,6 @@ const Mint = (props) => {
     <div className={styles['mint']}>
       {launch 
       ?
-      <Details />
-      :
       (<div>
         <Header />
         <div className={styles['form-body']}>
@@ -43,6 +41,8 @@ const Mint = (props) => {
         </div>
         <p>{txHash.length > 0 ? <TxHash txHash={txHash} /> : ''}</p>
       </div>)
+      :
+      <Details />
       }
     </div>
   );
