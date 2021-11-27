@@ -43,3 +43,10 @@
   color: #afafaf;
   font-size: .8rem;
 }
+
+@media screen and (max-width: 750px) {
+  .links a {
+    display: inline-block;
+    margin: 1rem 1.5rem;
+  }
+}

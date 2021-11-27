@@ -20,17 +20,24 @@ const Details = (props) => {
     const hr = min * 60;
     const d = hr * 24;
 
-    setDays(() => Math.floor(gap / d));
-    setHours(() => Math.floor((gap % d) / hr));
-    setMinutes(() => Math.floor((gap % hr) / min));
-    setSeconds(() => Math.floor((gap % min) / sec));
+    if (gap >= 0) {
+      setDays(() => Math.floor(gap / d));
+      setHours(() => Math.floor((gap % d) / hr));
+      setMinutes(() => Math.floor((gap % hr) / min));
+      setSeconds(() => Math.floor((gap % min) / sec));
+    }
+    else {
+      setDays(0);
+      setHours(0);
+      setMinutes(0);
+      setMinutes(0);
+    }
   }
   
   useEffect(() => {
     setInterval(() => {
       countdown();
     }, 1000);
-    console.log(new Date('November 24, 2021 15:14:00').getTime());
   }, []);
 
   return (

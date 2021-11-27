@@ -17,6 +17,7 @@
 .mint-btn {
   width: 20rem;
   height: 2.9rem;
+  font-weight: bold;
 }
 
 .mint-region {
@@ -35,7 +36,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  /* border: 1px solid red; */
   background-color: transparent;
   cursor: not-allowed;
 }

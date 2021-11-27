@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Nav.module.css';
 import Button from '../UI/Button.jsx';
 import logo from '../../assets/main-logo.png';
 
 const Nav = (props) => {
+  const [burgerOpen, setBurgerOpen] = useState(false);
+
   return (
-    <div className={styles['nav']}>
+    <nav className={styles['nav']}>
       <div>
         <Link to="/" className={styles['logo']}>
           <img 
@@ -16,7 +18,7 @@ const Nav = (props) => {
         </Link>
       </div>
 
-      <div className={styles['links']}>
+      <div className={`${styles['links']} ${burgerOpen ? styles['nav-slide'] : ''}`}>
         <Link to="/" className={styles['link']}>
           Home
         </Link>
@@ -46,7 +48,7 @@ const Nav = (props) => {
         </a>
       </div>
 
-      <div className={styles['btns']}>
+      <div className={`${styles['btns']} ${burgerOpen ? styles['nav-slide'] : ''}`}>
         { props.asyncOperation ? <i className={`fas fa-sync-alt ${styles['spinner']}`} /> : '' }
         <Button
           className={styles['connect-btn']}
@@ -65,7 +67,24 @@ const Nav = (props) => {
           )}
         </Button>
       </div>
-    </div>
+
+      <div className={styles['burger']}>
+        {burgerOpen ? 
+        <i 
+          className="fas fa-times"
+          onClick={() => {
+            setBurgerOpen(prev => !prev);
+          }}
+        /> 
+        : 
+        <i 
+          className="fas fa-bars"
+          onClick={() => {
+            setBurgerOpen(prev => !prev);
+          }}
+        />}
+      </div>
+    </nav>
   );
 }
 

@@ -29,19 +29,21 @@ const Mint = (props) => {
   return (
     <div className={styles['mint']}>
       {launch 
-      ? 
+      ?
+      <Details />
+      :
       (<div>
         <Header />
         <div className={styles['form-body']}>
           <Form 
             setTxHash={setTxHash}
             warning={props.status}
+            walletAddress={props.walletAddress}
           />
         </div>
         <p>{txHash.length > 0 ? <TxHash txHash={txHash} /> : ''}</p>
       </div>)
-      :
-      <Details />}
+      }
     </div>
   );
 }

@@ -75,3 +75,19 @@
   color: #E4761B;
   margin-left: .5rem;
 }
+
+@media screen and (max-width: 750px) {
+  .countdown-timer {
+    padding: 1rem 2rem;
+  }
+  
+  .countdown-timer p {
+    margin-top: .5rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .countdown-timer {
+    padding: 1rem .5rem;
+  }
+}

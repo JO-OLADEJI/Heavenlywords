@@ -38,10 +38,9 @@ const Form = (props) => {
     e.preventDefault();
 
     if (imageDesc.trim() === '') {
-      console.log('Empty image description ...');
+      alert('Image description cannot be empty!');
       return;
     }
-    // console.log({ imageDesc });
     setBtnActive(true);
     const txDetails = await mint(imageDesc);
     if (txDetails.success) {
@@ -52,7 +51,6 @@ const Form = (props) => {
     else {
       setBtnActive(false);
     }
-    console.log(txDetails);
   }
 
   
@@ -99,8 +97,14 @@ const Form = (props) => {
       <div className={styles['mint-region']}>
         <Button
           className={styles['mint-btn']}
-          // disable={true}
-          onClick={async (e) => mintHandler(e)}>
+          onClick={async (e) => {
+            // check to see that an address is connected
+            if (props.walletAddress.trim().length === 0) {
+              alert('you have to connect your wallet before minting!');
+              return;
+            }
+            mintHandler(e);
+          }}>
           MINT
         </Button>
         {btnActive ? (<div className={styles['signal-indicator']}>

@@ -48,3 +48,23 @@
     transform: scale(1);
   }
 }
+
+@media screen and (max-width: 750px) {
+  .image-slider {
+    width: 70vw;
+  }
+
+  .slider-img {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .image-slider {
+    width: 90vw;
+  }
+
+  .slider-img {
+    width: 80vw;
+  }
+}

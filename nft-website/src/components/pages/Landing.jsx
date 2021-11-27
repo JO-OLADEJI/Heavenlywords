@@ -42,7 +42,7 @@ const Landing = (props) => {
               alt="gritcult's avatar" 
             />
             <h3>Gritcult</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, accusamus!</p>
+            <p>Spreading innovation and creative energy by cult.</p>
           </div>
           <div className={`${styles['tommy']} ${styles['member']}`}>
             <img 
@@ -50,7 +50,7 @@ const Landing = (props) => {
               alt="tommy's avatar" 
             />
             <h3>Tommy</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, accusamus!</p>
+            <p>Building solutions and teams for web3.</p>
           </div>
           <div className={`${styles['josh']} ${styles['member']}`}>
             <img 
