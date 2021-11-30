@@ -36,7 +36,7 @@ const Footer = (props) => {
       </div>
       <Link to="/mint">
         <button className={styles['mint-ref']}>
-          Mint a heavenlyword
+          initiate and mint a HEAVENLY WORD
           <i className="fas fa-dove" />
         </button>
       </Link>

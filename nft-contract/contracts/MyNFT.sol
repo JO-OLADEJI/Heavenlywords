@@ -3,9 +3,10 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract Heavenlywords is ERC721URIStorage {
+contract Heavenlywords is ERC721URIStorage, Ownable {
     
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
@@ -14,7 +15,7 @@ contract Heavenlywords is ERC721URIStorage {
     // -> contract variables
     bool public paused = false;
     uint256 public maxSupply = 7777;
-    uint256 public cost = 0.07 ether;
+    uint256 public cost = 0.111 ether;
     string public initialURI = 'https://gateway.pinata.cloud/ipfs/QmWqhSGR2eC9bD7ocoEMpNnGRZK875yWxgExwfgm9QVejp';
     address public contractOwner;
     mapping (address => bool) public admins;
@@ -27,12 +28,6 @@ contract Heavenlywords is ERC721URIStorage {
         admins[msg.sender] = true;
     }
 
-
-    // -> modifiers
-    modifier onlyOwner {
-        require(msg.sender == contractOwner);
-        _;
-    }
 
     modifier onlyAdmin {
         require(admins[msg.sender]);
@@ -61,6 +56,14 @@ contract Heavenlywords is ERC721URIStorage {
         _setTokenURI(newItemId, initialURI);
         idToImageDesc[newItemId] = _imageDesc;
         return newItemId;
+    }
+
+
+    function contractURI() 
+        public 
+        pure 
+        returns (string memory) {
+        return "https://gateway.pinata.cloud/ipfs/QmVtu2dU56B7TCmkFFCBM8CAkwTRbVFvU3LwUH6Kp9kcw1";
     }
     
     

@@ -14,7 +14,7 @@
 
 .hero {
   text-align: center;
-  margin: 2rem 0;
+  margin: 4rem 0 2rem 0;
 }
 
 .hero h1 {
@@ -85,6 +85,10 @@
 
 .member p {
   font-size: .8rem;
+}
+
+.member a {
+  color: #d3d3d3;
 }
 
 @media screen and (max-width: 750px) {

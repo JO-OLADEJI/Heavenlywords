@@ -77,3 +77,9 @@
     transform: scale(1.5);
   }
 }
+
+.pricing {
+  text-align: center;
+  margin: .5rem;
+  color: #d3d3d3;
+}

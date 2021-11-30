@@ -2,22 +2,22 @@ import React from 'react';
 import styles from '../styles/Landing.module.css';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../main/ImageSlider.jsx';
-import Details from '../main/Details.jsx';
 import anonymous from '../../assets/anon.jpg';
+import gritcult from '../../assets/gritcult.jpeg';
 
 const Landing = (props) => {
   return (
     <div className={styles['landing']}>
       <section className={styles['hero']}>
         <h1>
-          Words are Powerful. 
+          Words are a way to communicate to the DIVINE.
           <br />
-          The right combination can be more!
+          Unlock a message from beyond!
         </h1>
-        <p>Heavenlywords AI conjure up a unique NFT out of thin air.</p>
+        <p>Heavenly Words Cult is using AI to communicate and conjure up a message via NFTs from the ether.</p>
         <Link to="/mint">
           <button className={styles['mint-ref']}>
-            Mint a heavenlyword
+            initiate and mint a HEAVENLY WORD
             <i className="fas fa-dove" />
           </button>
         </Link>
@@ -25,12 +25,10 @@ const Landing = (props) => {
 
       <section className={styles['carousel']}>
         <p>
-          We are experimenting with holistic approaches to bring users tons of unique nfts with endless possibilities. Our priority is to create unique nfts that's <b>limited only by the creativity of your words</b>.
+          We are the first project to use STACK GAN AI and esoteric and holistic approaches to bring you a communion from the heavens in the form of unique nfts with endless possibilities that you conjure. <b> Allow your creativity to summon the divine . . . </b>
         </p>
         <ImageSlider />
       </section>
-
-      <Details />
 
       <section className={styles['team']} id="team">
         <h1>Meet the team.</h1>
@@ -38,11 +36,14 @@ const Landing = (props) => {
         <div className={styles['members']}>
           <div className={`${styles['gritcult']} ${styles['member']}`}>
             <img 
-              src={anonymous} 
+              src={gritcult}
               alt="gritcult's avatar" 
             />
             <h3>Gritcult</h3>
             <p>Spreading innovation and creative energy by cult.</p>
+            <a href="https://twitter.com/GRITCULT?t=wEjPzxaMXbyGBYHMTMF1uw&s=09" target="_blank" rel="noreferrer">
+              <i className="fab fa-twitter" />
+            </a>
           </div>
           <div className={`${styles['tommy']} ${styles['member']}`}>
             <img 
