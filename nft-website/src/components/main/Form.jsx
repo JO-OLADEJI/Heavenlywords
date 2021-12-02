@@ -116,7 +116,7 @@ const Form = (props) => {
         </div> ) : ''}
       </div>
       <div className={styles['pricing']}>
-        <pre>Price:  <i className="fab fa-ethereum" /> .111 + Gas fee</pre>
+        <pre>Price:  <i className="fab fa-ethereum" /> .0777 + Gas fee</pre>
       </div>
     </div>
   );

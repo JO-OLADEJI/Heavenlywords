@@ -1,82 +1,13 @@
-import BN from 'bn.js';
+// import BN from 'bn.js';
 require('dotenv').config();
 const alchemyKey = process.env.REACT_APP_ALCHEMY_URL;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 const contractABI = require('../contract-abi.json');
-const contractAddress = "0xB3E1018e8f15b5c75e46Eb70432ad7C5Ba70a5D1";
+const contractAddress = "0xd76F284881b929be62A1b1c7781e9649b32f7985";
 
 
 // -> contract view functions
-export const getBalance = async () => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const bal = await heavenlywords.methods.getBalance().call({ from: window.ethereum.selectedAddress });
-    const weiValue = await new BN(bal, 10);
-    const oneGwei = new BN('1000000000', 10);
-    const gweiValue = await weiValue.div(oneGwei).toString(10);
-    const oneEth = 1000000000;
-    const ethValue = await parseInt(gweiValue) / oneEth;
-
-    return {
-      success: true,
-      result: ethValue
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
-export const getInitialURI = async () => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getInitialURI().call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
-export const getMaxSupply = async () => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getMaxSupply().call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
 export const getOwner = async () => {
   const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
 
@@ -85,27 +16,6 @@ export const getOwner = async () => {
     return {
       success: true,
       result: value.toLowerCase()
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: ''
-    };
-  }
-}
-
-
-
-
-export const getPaused = async () => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getPaused().call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
     };
   }
   catch (err) {
@@ -140,27 +50,6 @@ export const getCost = async () => {
 
 
 
-export const getMintCount = async () => {
-  const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
-
-  try {
-    const value = await heavenlywords.methods.getMintCount().call({ from: window.ethereum.selectedAddress });
-    return {
-      success: true,
-      result: value
-    };
-  }
-  catch (err) {
-    return {
-      success: false,
-      result: err
-    };
-  }
-}
-
-
-
-
 export const getImageDescById = async (id) => {
   const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
 
@@ -182,11 +71,11 @@ export const getImageDescById = async (id) => {
 
 
 
-export const isAdmin = async (addr) => {
+export const getMintCount = async (id) => {
   const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
 
   try {
-    const value = await heavenlywords.methods.isAdmin(addr).call({ from: window.ethereum.selectedAddress });
+    const value = await heavenlywords.methods.getMintCount(id).call({ from: window.ethereum.selectedAddress });
     return {
       success: true,
       result: value

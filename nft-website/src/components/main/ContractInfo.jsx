@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 
 import { 
-  getBalance, 
   getMintCount, 
-  // getCost, 
-  // getOwner, 
-  // getInitialURI, 
-  // getMaxSupply,
-  // getPaused,
   getImageDescById,
-  // isAdmin,
 } from '../../utils/view-fn.js';
 
 import styles from '../styles/ContractInfo.module.css';
@@ -18,29 +11,11 @@ import Input from '../UI/Input.jsx';
 
 const ContractInfo = (props) => {
   const [id, setId] = useState('');
-  const [balance, setBalance] = useState('');
   const [mintCount, setMintCount] = useState('');
   const [imageDesc, setImageDesc] = useState('');
 
   return (
     <section className={styles['contract-info']}>
-      <div className={styles['check-balance']}>
-        <h5><i className="fab fa-ethereum" /> Balance</h5>
-        <Button
-          onClick={async (e) => {
-            e.preventDefault();
-            props.setAsyncOperation(true);
-            const request = await getBalance();
-            if (request) props.setAsyncOperation(false);
-            console.log(request);
-          }}>
-          Get Balance
-        </Button>
-        <h3>
-          {balance}
-        </h3>
-      </div>
-
       <div className={styles['mint-count']}>
         <h5> Tokens <i className="fas fa-flag" /> minted</h5>
         <Button

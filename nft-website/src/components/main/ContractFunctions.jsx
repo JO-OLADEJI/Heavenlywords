@@ -6,7 +6,6 @@ import {
 
 import {
   withdraw,
-  // transfer
 } from '../../utils/transaction-fn.js';
 
 import styles from '../styles/ContractFunctions.module.css';
@@ -43,7 +42,7 @@ const ContractFunctions = (props) => {
       </div>
 
       <div className={styles['update-uri']}>
-        <h5>ID <i className="fas fa-pen-nib" /> Update token URI</h5>
+        {/* <h5>ID <i className="fas fa-pen-nib" /> Update token URI</h5>
         <Input
           type="number"
           min="1"
@@ -65,7 +64,7 @@ const ContractFunctions = (props) => {
             console.log(result);
           }}>
           Update
-        </Button>
+        </Button> */}
       </div>
     </section>
   );
