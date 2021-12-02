@@ -13,25 +13,16 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
     
     
     // -> contract variables
-    bool public paused = false;
-    uint256 public maxSupply = 7777;
-    uint256 public cost = 0.111 ether;
-    string public initialURI = 'https://gateway.pinata.cloud/ipfs/QmWqhSGR2eC9bD7ocoEMpNnGRZK875yWxgExwfgm9QVejp';
+    uint256 public maxSupply = 777;
+    uint256 public cost = 0.0777 ether;
+    string public initialURI = 'https://gateway.pinata.cloud/ipfs/Qmc7sDVYucESNAsee8E3CSj2f3eNmNnqrJ75dGC1pdZC66';
     address public contractOwner;
-    mapping (address => bool) public admins;
     mapping (uint256 => string) public idToImageDesc;
     
 
     // -> contract constructor
     constructor() ERC721("Heavenlywords", "HWs") {
         contractOwner = msg.sender;
-        admins[msg.sender] = true;
-    }
-
-
-    modifier onlyAdmin {
-        require(admins[msg.sender]);
-        _;
     }
 
 
@@ -63,7 +54,7 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
         public 
         pure 
         returns (string memory) {
-        return "https://gateway.pinata.cloud/ipfs/QmVtu2dU56B7TCmkFFCBM8CAkwTRbVFvU3LwUH6Kp9kcw1";
+        return "https://gateway.pinata.cloud/ipfs/QmeCXbGEXc3BiPz3johH7pFNVhFxC33rsvpczYGXP2oAHy";
     }
     
     
@@ -77,14 +68,6 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
             _setTokenURI(_IDs[i], _URIs[i]);
         }
     }
-    
-    
-    function updateOneURI(uint256 _ID, string memory _URI)
-        public
-        onlyAdmin
-    {
-        _setTokenURI(_ID, _URI);
-    }
 
 
     function withdraw(uint256 _amount)
@@ -92,59 +75,6 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
         onlyOwner
     {
         payable(msg.sender).transfer(_amount);
-    }
-    
-    
-    
-    function transfer(address payable _addr, uint256 _amount) 
-        public
-        onlyOwner
-    {
-        _addr.transfer(_amount);
-    }
-    
-    
-    function getBalance() 
-        public 
-        view 
-        onlyAdmin
-        returns(uint256) 
-    {
-        return(address(this).balance);
-    }
-
-
-    function getInitialURI()
-        public
-        view
-        returns(string memory)
-    {
-        return initialURI;
-    }
-
-
-    function setInitialURI(string memory _newURI)
-        public
-        onlyAdmin
-    {
-        initialURI = _newURI;
-    }
-
-
-    function getMaxSupply()
-        public
-        view
-        returns(uint256)
-    {
-        return maxSupply;
-    }
-
-
-    function setMaxSupply(uint256 _value)
-        public
-        onlyOwner
-    {
-        maxSupply = _value;
     }
 
 
@@ -154,23 +84,6 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
         returns(address)
     {
         return contractOwner;
-    }
-
-
-    function getPaused()
-        public
-        view
-        returns(bool)
-    {
-        return paused;
-    }
-    
-    
-    function setPaused(bool _value)
-        public
-        onlyAdmin
-    {
-        paused = _value;
     }
     
 
@@ -183,18 +96,9 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
     }
     
     
-    function setCost(uint256 _newCost) 
-        public
-        onlyOwner
-    {
-        cost = _newCost;
-    }
-    
-    
     function getMintCount()
         public 
         view
-        onlyAdmin
         returns(uint256)
     {
         return _tokenIds.current();
@@ -207,31 +111,6 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
         returns(string memory)
     {
         return idToImageDesc[_id];
-    }
-
-
-    function setAdmin(address _addr)
-        public
-        onlyOwner
-    {
-        admins[_addr] = true;
-    }
-
-
-    function removeAdmin(address _addr)
-        public
-        onlyOwner
-    {
-        admins[_addr] = false;
-    }
-
-
-    function isAdmin(address _addr)
-        public
-        view
-        returns(bool)
-    {
-        return admins[_addr];
     }
     
 }
