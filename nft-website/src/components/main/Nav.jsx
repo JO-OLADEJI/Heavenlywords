@@ -29,7 +29,7 @@ const Nav = (props) => {
           className={styles['ex-link']}
           target="_blank"
           rel="noreferrer"
-          href="https://testnets.opensea.io/collection/heavenlywords-v3">
+          href="https://testnets.opensea.io/collection/heavenlywords-collection">
           Opensea
         </a>
         <a

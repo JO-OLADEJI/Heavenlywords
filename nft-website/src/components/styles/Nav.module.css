@@ -47,6 +47,11 @@
   color: white;
 }
 
+.btns p,
+.btns i {
+  background-color: transparent;
+}
+
 .spinner {
   animation: spin .5s linear infinite;
   transition: display .2s ease-in;
@@ -85,6 +90,15 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1.1rem;
+}
+
+.connect-btn:hover {
+  background-color: #E4761B;
+}
+
+.connect-btn:hover p,
+.connect-btn:hover i {
+  color: white;
 }
 
 .connect-btn p {
