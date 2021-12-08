@@ -31,9 +31,7 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
         public 
         payable
         returns (uint256)
-    {
-        require(!paused, 'Minting is paused');
-        
+    {      
         if (msg.sender != contractOwner)
         {
             require(msg.value >= cost, 'Not enough ETH sent; check price!');
@@ -60,7 +58,7 @@ contract Heavenlywords is ERC721URIStorage, Ownable {
     
     function updateURIs(uint256[] memory _IDs, string[] memory _URIs)
         public
-        onlyAdmin
+        onlyOwner
     {
         require(_IDs.length == _URIs.length);
         for(uint256 i = 0; i < _IDs.length; i++)
