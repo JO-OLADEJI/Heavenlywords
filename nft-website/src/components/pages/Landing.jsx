@@ -2,8 +2,8 @@ import React from 'react';
 import styles from '../styles/Landing.module.css';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../main/ImageSlider.jsx';
-import anonymous from '../../assets/anon.jpg';
-import gritcult from '../../assets/gritcult.jpeg';
+// import anonymous from '../../assets/anon.jpg';
+// import gritcult from '../../assets/gritcult.jpeg';
 
 const Landing = (props) => {
   return (
@@ -30,7 +30,7 @@ const Landing = (props) => {
         <ImageSlider />
       </section>
 
-      <section className={styles['team']} id="team">
+      {/* <section className={styles['team']} id="team">
         <h1>Meet the team.</h1>
         <p>We are commited to making a distinctive contribution in the NFT space.</p>
         <div className={styles['members']}>
@@ -62,7 +62,7 @@ const Landing = (props) => {
             <p>Analog by birth, digital by code.</p>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

@@ -33,12 +33,25 @@ const Form = (props) => {
     setWord7('');
   }
 
+  const getWordCount = () => {
+    let wordCount = 0;
+    wordCount = word1.trim() === "" ? wordCount : wordCount + 1;
+    wordCount = word2.trim() === "" ? wordCount : wordCount + 1;
+    wordCount = word3.trim() === "" ? wordCount : wordCount + 1;
+    wordCount = word4.trim() === "" ? wordCount : wordCount + 1;
+    wordCount = word5.trim() === "" ? wordCount : wordCount + 1;
+    wordCount = word6.trim() === "" ? wordCount : wordCount + 1;
+    wordCount = word7.trim() === "" ? wordCount : wordCount + 1;
+
+    return wordCount;
+  }
+
 
   const mintHandler = async (e) => {
     e.preventDefault();
 
-    if (imageDesc.trim() === '') {
-      alert('Image description cannot be empty!');
+    if (getWordCount() < 3) {
+      alert('Image description must be 3 or more words!');
       return;
     }
     setBtnActive(true);
