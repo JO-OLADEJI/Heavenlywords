@@ -29,21 +29,21 @@ const Nav = (props) => {
           className={styles['ex-link']}
           target="_blank"
           rel="noreferrer"
-          href="https://testnets.opensea.io/collection/heavenlywords-collection">
+          href="https://opensea.io/collection/heavenlywords">
           Opensea
         </a>
         <a
           className={styles['ex-link']}
           target="_blank"
           rel="noreferrer"
-          href="https://discord.gg/ZtZK4FCn">
+          href="https://discord.gg/CuEPe5FcP9">
           <i className="fab fa-discord" />
         </a>
         <a
           className={styles['ex-link']}
           target="_blank"
           rel="noreferrer"
-          href="https://twitter.com/GRITCULT/status/1440111086162911232?s=19">
+          href="https://twitter.com/metacultdao?s=21">
           <i className="fab fa-twitter" />
         </a>
       </div>

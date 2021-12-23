@@ -1,5 +1,6 @@
 .mint {
   padding: 2rem 10vw;
+  position: relative;
 }
 
 .mint > h1 {

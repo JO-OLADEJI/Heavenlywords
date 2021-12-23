@@ -1,0 +1,40 @@
+.success {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -60%);
+  border: 2px solid #E4761B;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 10px #464d52;
+}
+
+.tick {
+  font-size: 5rem;
+  margin: 2rem;
+  color: #02ad66;
+}
+
+.success h2 {
+  color: #d3d3d3;
+}
+
+.success a {
+  display: inline-block;
+  border: 2px solid #9c9c9c;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: #E4761B;
+  padding: .5rem 2rem;
+  border-radius: .5rem;
+}
+
+.close {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  color: #FF1616;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

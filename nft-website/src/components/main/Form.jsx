@@ -3,6 +3,7 @@ import styles from '../styles/Form.module.css';
 import Input from '../UI/Input.jsx';
 import Button from '../UI/Button.jsx';
 import { mint } from '../../utils/mint-fn.js';
+import { getMintCount } from '../../utils/view-fn.js';
 
 const Form = (props) => {
   const [word1, setWord1] = useState('');
@@ -58,7 +59,8 @@ const Form = (props) => {
     const txDetails = await mint(imageDesc);
     if (txDetails.success) {
       resetInputs();
-      props.setTxHash(txDetails.hash);
+      const latestTokenId = await getMintCount();
+      props.setTokenId(latestTokenId);
       setBtnActive(false);
     }
     else {
