@@ -1,7 +1,7 @@
 # Heavenlywords
 A decentralized application(dApp) for minting text-based generated image NFTs.
 
-![Heavenlywords website screenshot](https://drive.google.com/file/d/1ZTlq3ZTN0Ji5ABC1jFmvbOrEwu-ZikWw/view?usp=sharing)
+![Heavenlywords screenshot](https://user-images.githubusercontent.com/53357470/147779552-3751e412-0a98-46b0-9c63-a374ef39122d.png)
 
 ## Installation
 **Note**: Instructions are for testing the dApp on the [Rinkeby](https://www.rinkeby.io/) testnet.
