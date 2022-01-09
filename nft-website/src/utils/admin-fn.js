@@ -31,7 +31,7 @@ export const updateURIs = async (IDs, URIs) => {
 
     return {
       success: true,
-      status: "✅ Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" + txHash
+      status: "✅ Check out your transaction on Etherscan: https://etherscan.io/tx/" + txHash
     };
   }
   catch (error) {

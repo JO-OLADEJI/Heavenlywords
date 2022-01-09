@@ -1,3 +1,24 @@
 .contract-functions > div {
   margin-bottom: 2rem;
 }
+
+textarea {
+  width: 20rem;
+  height: 10rem;
+  font-family: 'Poppins', sans-serif;
+  margin: .5rem 0;
+  border-radius: 0.5rem;
+  border: 2px solid #acacac;
+  padding: .7rem 1rem;
+  font-size: 1rem;
+  transition: border .3s ease-in-out;
+  font-family: inherit;
+  outline: none;
+  background-color: transparent;
+  color: #E4761B;
+  resize: none;
+}
+
+button {
+  font-weight: 500;
+}

@@ -52,10 +52,6 @@ const ContractInfo = (props) => {
           }}>
           Get description
         </Button>
-        <h3>
-          <i className="fas fa-tags" />
-          {imageDesc}
-        </h3>
       </div>
     </section>
   );

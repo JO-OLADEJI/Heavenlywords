@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import {
-  updateOneURI,
+  updateURIs,
 } from '../../utils/admin-fn.js'
 
 import {
@@ -13,9 +13,32 @@ import Button from '../UI/Button.jsx';
 import Input from '../UI/Input.jsx';
 
 const ContractFunctions = (props) => {
-  const [id, setId] = useState('');
-  const [ipfsURI, setIpfsURI] = useState('');
+  const [startID, setStartID] = useState('');
+  const [lastID, setLastID] = useState('');
+  const [ipfsURIs, setIpfsURIs] = useState('');
   const [withdrawAmt, setWithdrawAmt] = useState();
+
+  /**
+   * @param {String} links - a string of all links seperated by a newline(\n)
+   */
+  const handleUriUpdate = async (links) => {
+    const pretty = links.split('\n');
+    let ids = [];
+    for (let i = parseInt(startID); i <= parseInt(lastID); i++) {
+      ids.push(i);
+    }
+    // -> if the two arrays are of same length: continue
+    if (pretty.length === ids.length) {
+      props.setAsyncOperation(true);
+      const result = await updateURIs(ids, pretty);
+      if (result) props.setAsyncOperation(false);
+    }
+    else {
+      console.log('Discrepancy of ids and link\'s length ❗');
+    }
+
+    console.log({ pretty, ids });
+  }
 
 
   return (
@@ -42,29 +65,37 @@ const ContractFunctions = (props) => {
       </div>
 
       <div className={styles['update-uri']}>
-        {/* <h5>ID <i className="fas fa-pen-nib" /> Update token URI</h5>
-        <Input
-          type="number"
-          min="1"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-          placeholder="token ID"
+        <h5>ID <i className="fas fa-pen-nib" /> Update token URI</h5>
+        <textarea
+          value={ipfsURIs}
+          onChange={(e) => setIpfsURIs(e.target.value)}
+          placeholder="IPFS metadata links"
         />
-        <Input
-          value={ipfsURI}
-          onChange={(e) => setIpfsURI(e.target.value)}
-          placeholder="IPFS metadata link"
-        />
+        <div>
+          <Input
+            className={styles['start-id']}
+            type="number"
+            min="1"
+            placeholder="start ID"
+            value={startID}
+            onChange={(e) => setStartID(e.target.value)}
+          />
+          <Input
+            className={styles['last-id']}
+            type="number"
+            min="1"
+            placeholder="last ID"
+            value={lastID}
+            onChange={(e) => setLastID(e.target.value)}
+          />
+        </div>
         <Button
           onClick={async (e) => {
             e.preventDefault();
-            props.setAsyncOperation(true);
-            const result = await updateOneURI(id, ipfsURI);
-            if (result) props.setAsyncOperation(false);
-            console.log(result);
+            handleUriUpdate(ipfsURIs);
           }}>
           Update
-        </Button> */}
+        </Button>
       </div>
     </section>
   );
