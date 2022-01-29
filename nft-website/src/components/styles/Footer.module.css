@@ -14,13 +14,19 @@
 .link,
 .ex-link {
   display: inline-block;
-  margin: 0 1.5rem;
+  margin: 0 1rem;
   color: #d3d3d3;
   text-decoration: none;
+  transition: .2s all ease-in;
 }
 
 .ex-link i {
   font-size: 1.2rem;
+}
+
+.link:hover,
+.ex-link:hover {
+  color: #E4761B;
 }
 
 .mint-ref {

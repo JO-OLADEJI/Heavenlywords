@@ -6,6 +6,7 @@ import Mint from './components/pages/Mint.jsx';
 import Admin from './components/pages/Admin.jsx';
 import Nav from './components/main/Nav.jsx';
 import Landing from './components/pages/Landing.jsx';
+import Gallery from './components/pages/Gallery.jsx';
 import Footer from './components/main/Footer.jsx';
 
 const App = () => {
@@ -78,6 +79,9 @@ const App = () => {
               status={status}
               walletAddress={walletAddress}
             />
+          </Route>
+          <Route path="/gallery">
+            <Gallery />
           </Route>
           <Route path="/admin">
             <Admin

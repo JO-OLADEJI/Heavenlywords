@@ -1,0 +1,51 @@
+.frame {
+  width: 15rem;
+  height: 19rem;
+  overflow: hidden;
+  border-radius: .8rem;
+  display: inline-block;
+  margin: 1.5rem .8rem;
+  position: relative;
+}
+
+.art {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: scale(1.55);
+  transition: all .5s ease-in-out;
+}
+
+.art {
+  width: 100%;
+}
+
+.desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  padding: .2rem;
+  position: absolute;
+  background: transparent;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: all .3s ease-in-out;
+}
+
+.desc p {
+  text-align: center;
+  font-size: .9rem;
+  color: #d3d3d3;
+  background: transparent;
+}
+
+.frame:hover > .desc {
+  transform: translateX(0%);
+}
+
+.frame:hover > .art {
+  transform: scale(1);
+}

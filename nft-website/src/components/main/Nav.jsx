@@ -32,6 +32,9 @@ const Nav = (props) => {
           href="https://opensea.io/collection/heavenlywords">
           Opensea
         </a>
+        <Link to="/gallery" className={styles['link']}>
+          Gallery
+        </Link>
         <a
           className={styles['ex-link']}
           target="_blank"
