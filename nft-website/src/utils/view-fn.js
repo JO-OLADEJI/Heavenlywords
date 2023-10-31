@@ -7,7 +7,6 @@ const contractABI = require('../contract-abi.json');
 // const contractAddress = "0x58c14f43cbc58cb7bf641c521e2360941f957bf9";
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 
-
 // -> contract view functions
 export const getOwner = async () => {
   const heavenlywords = new web3.eth.Contract(contractABI, contractAddress);
